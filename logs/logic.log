@@ -1758,3 +1758,607 @@
 2025-11-26 16:39:17,290 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/sensors/lab3_temp_2/state matched_callbacks=1
 2025-11-26 16:39:17,296 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/sensors/lab3_hum_1/state matched_callbacks=1
 2025-11-26 16:39:17,299 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/sensors/lab3_hum_2/state matched_callbacks=1
+2025-11-29 16:15:43,092 INFO Device_connectors.mqtt_client [mqtt_client.py:99]: Connecting to MQTT broker at mqtt:1883
+2025-11-29 16:15:43,094 INFO Device_connectors.mqtt_client [mqtt_client.py:106]: Subscribed to labs/+/sensors/+/state
+2025-11-29 16:15:43,096 INFO Device_connectors.mqtt_client [mqtt_client.py:106]: Subscribed to labs/+/actuators/+/state
+2025-11-29 16:15:43,102 INFO controller.rules [rules.py:55]: Loaded 12 actuators from /app/catalog/devices.json
+2025-11-29 16:15:43,130 INFO Device_connectors.mqtt_client [mqtt_client.py:99]: Connecting to MQTT broker at mqtt:1883
+2025-11-29 16:15:43,131 INFO Device_connectors.mqtt_client [mqtt_client.py:106]: Subscribed to labs/+/actuators/+/cmd
+2025-11-29 16:15:43,132 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/actuators/lab1_fan_1/state payload={"state": "OFF", "ts": 1764432943, "actuator_id": "lab1_fan_1"}
+2025-11-29 16:15:43,134 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/actuators/lab1_dehumidifier_1/state payload={"state": "OFF", "ts": 1764432943, "actuator_id": "lab1_dehumidifier_1"}
+2025-11-29 16:15:43,135 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/actuators/lab1_humidifier_1/state payload={"state": "OFF", "ts": 1764432943, "actuator_id": "lab1_humidifier_1"}
+2025-11-29 16:15:43,136 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/actuators/lab1_heater_1/state payload={"state": "OFF", "ts": 1764432943, "actuator_id": "lab1_heater_1"}
+2025-11-29 16:15:43,137 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/actuators/lab2_fan_1/state payload={"state": "OFF", "ts": 1764432943, "actuator_id": "lab2_fan_1"}
+2025-11-29 16:15:43,138 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/actuators/lab2_dehumidifier_1/state payload={"state": "OFF", "ts": 1764432943, "actuator_id": "lab2_dehumidifier_1"}
+2025-11-29 16:15:43,140 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/actuators/lab2_humidifier_1/state payload={"state": "OFF", "ts": 1764432943, "actuator_id": "lab2_humidifier_1"}
+2025-11-29 16:15:43,141 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/actuators/lab2_heater_1/state payload={"state": "OFF", "ts": 1764432943, "actuator_id": "lab2_heater_1"}
+2025-11-29 16:15:43,142 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/actuators/lab3_fan_1/state payload={"state": "OFF", "ts": 1764432943, "actuator_id": "lab3_fan_1"}
+2025-11-29 16:15:43,143 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/actuators/lab3_dehumidifier_1/state payload={"state": "OFF", "ts": 1764432943, "actuator_id": "lab3_dehumidifier_1"}
+2025-11-29 16:15:43,144 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/actuators/lab3_humidifier_1/state payload={"state": "OFF", "ts": 1764432943, "actuator_id": "lab3_humidifier_1"}
+2025-11-29 16:15:43,145 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/actuators/lab3_heater_1/state payload={"state": "OFF", "ts": 1764432943, "actuator_id": "lab3_heater_1"}
+2025-11-29 16:15:43,148 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/sensors/lab1_temp_1/state payload={"t": 26.802532949990535, "h": 45.20359640077919, "ts": 1764432943, "sensor_id": "lab1_temp_1"}
+2025-11-29 16:15:43,149 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/sensors/lab1_temp_2/state payload={"t": 27.11411979723339, "h": 45.44556429682044, "ts": 1764432943, "sensor_id": "lab1_temp_2"}
+2025-11-29 16:15:43,152 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/sensors/lab1_hum_1/state payload={"t": 26.768972605241817, "h": 45.08858135445554, "ts": 1764432943, "sensor_id": "lab1_hum_1"}
+2025-11-29 16:15:43,157 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/sensors/lab1_hum_2/state payload={"t": 26.682576224591973, "h": 45.83664338969427, "ts": 1764432943, "sensor_id": "lab1_hum_2"}
+2025-11-29 16:15:43,160 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/sensors/lab2_temp_1/state payload={"t": 27.143684080559108, "h": 47.8650285291361, "ts": 1764432943, "sensor_id": "lab2_temp_1"}
+2025-11-29 16:15:43,161 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/sensors/lab2_temp_2/state payload={"t": 26.85793862432985, "h": 47.91059464351182, "ts": 1764432943, "sensor_id": "lab2_temp_2"}
+2025-11-29 16:15:43,163 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/sensors/lab2_hum_1/state payload={"t": 27.086161035075676, "h": 48.34308288084055, "ts": 1764432943, "sensor_id": "lab2_hum_1"}
+2025-11-29 16:15:43,164 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/sensors/lab2_hum_2/state payload={"t": 26.913892989726456, "h": 48.45558918581237, "ts": 1764432943, "sensor_id": "lab2_hum_2"}
+2025-11-29 16:15:43,165 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/sensors/lab3_temp_1/state payload={"t": 26.81183395644307, "h": 49.16300901163249, "ts": 1764432943, "sensor_id": "lab3_temp_1"}
+2025-11-29 16:15:43,166 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/sensors/lab3_temp_2/state payload={"t": 26.891270280457093, "h": 49.13624422417693, "ts": 1764432943, "sensor_id": "lab3_temp_2"}
+2025-11-29 16:15:43,168 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/sensors/lab3_hum_1/state payload={"t": 26.66428152558407, "h": 48.98588441290621, "ts": 1764432943, "sensor_id": "lab3_hum_1"}
+2025-11-29 16:15:43,168 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/sensors/lab3_hum_2/state payload={"t": 26.852786519091897, "h": 49.032801563732185, "ts": 1764432943, "sensor_id": "lab3_hum_2"}
+2025-11-29 16:15:43,204 INFO Device_connectors.mqtt_client [mqtt_client.py:99]: Connecting to MQTT broker at mqtt:1883
+2025-11-29 16:15:45,094 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/sensors/lab1_temp_1/state matched_callbacks=1
+2025-11-29 16:15:45,097 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/sensors/lab1_temp_2/state matched_callbacks=1
+2025-11-29 16:15:45,100 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/sensors/lab1_hum_1/state matched_callbacks=1
+2025-11-29 16:15:45,103 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/sensors/lab1_hum_2/state matched_callbacks=1
+2025-11-29 16:15:45,106 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/sensors/lab2_temp_1/state matched_callbacks=1
+2025-11-29 16:15:45,108 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/sensors/lab2_temp_2/state matched_callbacks=1
+2025-11-29 16:15:45,110 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/sensors/lab2_hum_1/state matched_callbacks=1
+2025-11-29 16:15:45,112 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/sensors/lab2_hum_2/state matched_callbacks=1
+2025-11-29 16:15:45,114 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/sensors/lab3_temp_1/state matched_callbacks=1
+2025-11-29 16:15:45,117 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/sensors/lab3_temp_2/state matched_callbacks=1
+2025-11-29 16:15:45,120 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/sensors/lab3_hum_1/state matched_callbacks=1
+2025-11-29 16:15:45,122 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/sensors/lab3_hum_2/state matched_callbacks=1
+2025-11-29 16:15:45,125 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/actuators/lab1_heater_1/state matched_callbacks=1
+2025-11-29 16:15:45,126 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/actuators/lab1_fan_1/state matched_callbacks=1
+2025-11-29 16:15:45,128 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/actuators/lab1_humidifier_1/state matched_callbacks=1
+2025-11-29 16:15:45,130 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/actuators/lab1_dehumidifier_1/state matched_callbacks=1
+2025-11-29 16:15:45,131 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/actuators/lab1_heater_1/cmd matched_callbacks=1
+2025-11-29 16:15:45,132 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/actuators/lab2_heater_1/state matched_callbacks=1
+2025-11-29 16:15:45,132 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/actuators/lab1_heater_1/state payload={"state": "OFF", "ts": 1763982102, "actuator_id": "lab1_heater_1"}
+2025-11-29 16:15:45,134 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/actuators/lab1_fan_1/cmd matched_callbacks=1
+2025-11-29 16:15:45,134 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/actuators/lab2_fan_1/state matched_callbacks=1
+2025-11-29 16:15:45,134 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/actuators/lab1_fan_1/state payload={"state": "ON", "ts": 1763982092, "actuator_id": "lab1_fan_1"}
+2025-11-29 16:15:45,137 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/actuators/lab1_humidifier_1/cmd matched_callbacks=1
+2025-11-29 16:15:45,137 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/actuators/lab2_humidifier_1/state matched_callbacks=1
+2025-11-29 16:15:45,138 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/actuators/lab1_humidifier_1/state payload={"state": "OFF", "ts": 1763808912, "actuator_id": "lab1_humidifier_1"}
+2025-11-29 16:15:45,140 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/actuators/lab2_heater_1/cmd matched_callbacks=1
+2025-11-29 16:15:45,140 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/actuators/lab2_dehumidifier_1/state matched_callbacks=1
+2025-11-29 16:15:45,141 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/actuators/lab2_heater_1/state payload={"state": "ON", "ts": 1763982052, "actuator_id": "lab2_heater_1"}
+2025-11-29 16:15:45,142 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/actuators/lab2_fan_1/cmd matched_callbacks=1
+2025-11-29 16:15:45,143 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/actuators/lab3_heater_1/state matched_callbacks=1
+2025-11-29 16:15:45,143 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/actuators/lab2_fan_1/state payload={"state": "ON", "ts": 1763982107, "actuator_id": "lab2_fan_1"}
+2025-11-29 16:15:45,145 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/actuators/lab2_humidifier_1/cmd matched_callbacks=1
+2025-11-29 16:15:45,145 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/actuators/lab3_fan_1/state matched_callbacks=1
+2025-11-29 16:15:45,146 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/actuators/lab2_humidifier_1/state payload={"state": "OFF", "ts": 1763808912, "actuator_id": "lab2_humidifier_1"}
+2025-11-29 16:15:45,148 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/actuators/lab3_humidifier_1/state matched_callbacks=1
+2025-11-29 16:15:45,148 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/actuators/lab2_dehumidifier_1/cmd matched_callbacks=1
+2025-11-29 16:15:45,149 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/actuators/lab2_dehumidifier_1/state payload={"state": "OFF", "ts": 1763981917, "actuator_id": "lab2_dehumidifier_1"}
+2025-11-29 16:15:45,149 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/actuators/lab3_dehumidifier_1/state matched_callbacks=1
+2025-11-29 16:15:45,150 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/actuators/lab3_heater_1/cmd matched_callbacks=1
+2025-11-29 16:15:45,151 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/actuators/lab3_heater_1/state payload={"state": "OFF", "ts": 1763982012, "actuator_id": "lab3_heater_1"}
+2025-11-29 16:15:45,151 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/actuators/lab1_fan_1/state matched_callbacks=1
+2025-11-29 16:15:45,152 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/actuators/lab3_fan_1/cmd matched_callbacks=1
+2025-11-29 16:15:45,154 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/actuators/lab1_dehumidifier_1/state matched_callbacks=1
+2025-11-29 16:15:45,154 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/actuators/lab3_fan_1/state payload={"state": "ON", "ts": 1763982007, "actuator_id": "lab3_fan_1"}
+2025-11-29 16:15:45,156 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/actuators/lab1_humidifier_1/state matched_callbacks=1
+2025-11-29 16:15:45,156 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/actuators/lab3_humidifier_1/cmd matched_callbacks=1
+2025-11-29 16:15:45,158 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/actuators/lab3_humidifier_1/state payload={"state": "OFF", "ts": 1763806984, "actuator_id": "lab3_humidifier_1"}
+2025-11-29 16:15:45,158 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/actuators/lab1_heater_1/state matched_callbacks=1
+2025-11-29 16:15:45,159 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/actuators/lab3_dehumidifier_1/cmd matched_callbacks=1
+2025-11-29 16:15:45,160 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/actuators/lab3_dehumidifier_1/state payload={"state": "OFF", "ts": 1763815219, "actuator_id": "lab3_dehumidifier_1"}
+2025-11-29 16:15:45,160 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/actuators/lab2_fan_1/state matched_callbacks=1
+2025-11-29 16:15:45,163 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/actuators/lab2_dehumidifier_1/state matched_callbacks=1
+2025-11-29 16:15:45,165 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/actuators/lab2_humidifier_1/state matched_callbacks=1
+2025-11-29 16:15:45,166 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/actuators/lab2_heater_1/state matched_callbacks=1
+2025-11-29 16:15:45,168 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/actuators/lab3_fan_1/state matched_callbacks=1
+2025-11-29 16:15:45,171 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/actuators/lab3_dehumidifier_1/state matched_callbacks=1
+2025-11-29 16:15:45,172 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/actuators/lab3_humidifier_1/state matched_callbacks=1
+2025-11-29 16:15:45,174 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/actuators/lab3_heater_1/state matched_callbacks=1
+2025-11-29 16:15:45,176 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/sensors/lab1_temp_1/state matched_callbacks=1
+2025-11-29 16:15:45,179 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/sensors/lab1_temp_2/state matched_callbacks=1
+2025-11-29 16:15:45,181 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/sensors/lab1_hum_1/state matched_callbacks=1
+2025-11-29 16:15:45,183 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/sensors/lab1_hum_2/state matched_callbacks=1
+2025-11-29 16:15:45,186 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/sensors/lab2_temp_1/state matched_callbacks=1
+2025-11-29 16:15:45,189 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/sensors/lab2_temp_2/state matched_callbacks=1
+2025-11-29 16:15:45,192 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/sensors/lab2_hum_1/state matched_callbacks=1
+2025-11-29 16:15:45,195 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/sensors/lab2_hum_2/state matched_callbacks=1
+2025-11-29 16:15:45,198 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/sensors/lab3_temp_1/state matched_callbacks=1
+2025-11-29 16:15:45,201 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/sensors/lab3_temp_2/state matched_callbacks=1
+2025-11-29 16:15:45,204 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/sensors/lab3_hum_1/state matched_callbacks=1
+2025-11-29 16:15:45,207 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/sensors/lab3_hum_2/state matched_callbacks=1
+2025-11-29 16:15:45,210 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/actuators/lab1_heater_1/state matched_callbacks=1
+2025-11-29 16:15:45,212 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/actuators/lab1_fan_1/state matched_callbacks=1
+2025-11-29 16:15:45,214 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/actuators/lab1_humidifier_1/state matched_callbacks=1
+2025-11-29 16:15:45,216 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/actuators/lab2_heater_1/state matched_callbacks=1
+2025-11-29 16:15:45,218 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/actuators/lab2_fan_1/state matched_callbacks=1
+2025-11-29 16:15:45,220 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/actuators/lab2_humidifier_1/state matched_callbacks=1
+2025-11-29 16:15:45,222 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/actuators/lab2_dehumidifier_1/state matched_callbacks=1
+2025-11-29 16:15:45,224 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/actuators/lab3_heater_1/state matched_callbacks=1
+2025-11-29 16:15:45,226 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/actuators/lab3_fan_1/state matched_callbacks=1
+2025-11-29 16:15:45,228 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/actuators/lab3_humidifier_1/state matched_callbacks=1
+2025-11-29 16:15:45,230 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/actuators/lab3_dehumidifier_1/state matched_callbacks=1
+2025-11-29 16:15:52,499 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/sensors/lab1_temp_1/state payload={"t": 26.4357536122115, "h": 44.59401244342232, "ts": 1764432952, "sensor_id": "lab1_temp_1"}
+2025-11-29 16:15:52,500 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/sensors/lab1_temp_2/state payload={"t": 26.791372112574482, "h": 44.60980505814604, "ts": 1764432952, "sensor_id": "lab1_temp_2"}
+2025-11-29 16:15:52,500 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/sensors/lab1_temp_1/state matched_callbacks=1
+2025-11-29 16:15:52,503 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/sensors/lab1_hum_1/state payload={"t": 26.807072997530106, "h": 44.333229197754896, "ts": 1764432952, "sensor_id": "lab1_hum_1"}
+2025-11-29 16:15:52,507 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/sensors/lab1_hum_2/state payload={"t": 26.51511463460752, "h": 45.06233491978074, "ts": 1764432952, "sensor_id": "lab1_hum_2"}
+2025-11-29 16:15:52,508 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/sensors/lab2_temp_1/state payload={"t": 26.912380066161653, "h": 47.04427224406214, "ts": 1764432952, "sensor_id": "lab2_temp_1"}
+2025-11-29 16:15:52,508 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/sensors/lab1_temp_2/state matched_callbacks=1
+2025-11-29 16:15:52,509 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/sensors/lab2_temp_2/state payload={"t": 27.12375576635025, "h": 47.140874391734734, "ts": 1764432952, "sensor_id": "lab2_temp_2"}
+2025-11-29 16:15:52,516 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/sensors/lab2_hum_1/state payload={"t": 26.956266243622885, "h": 47.524499799045266, "ts": 1764432952, "sensor_id": "lab2_hum_1"}
+2025-11-29 16:15:52,517 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/sensors/lab1_hum_1/state matched_callbacks=1
+2025-11-29 16:15:52,518 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/sensors/lab2_hum_2/state payload={"t": 27.001504793045473, "h": 46.987671756709624, "ts": 1764432952, "sensor_id": "lab2_hum_2"}
+2025-11-29 16:15:52,521 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/sensors/lab3_temp_1/state payload={"t": 26.38118648467581, "h": 49.34609240967115, "ts": 1764432952, "sensor_id": "lab3_temp_1"}
+2025-11-29 16:15:52,521 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/sensors/lab1_hum_2/state matched_callbacks=1
+2025-11-29 16:15:52,522 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/sensors/lab3_temp_2/state payload={"t": 26.64791210101917, "h": 49.14794374532709, "ts": 1764432952, "sensor_id": "lab3_temp_2"}
+2025-11-29 16:15:52,524 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/sensors/lab3_hum_1/state payload={"t": 26.632003075020194, "h": 49.70785372640758, "ts": 1764432952, "sensor_id": "lab3_hum_1"}
+2025-11-29 16:15:52,526 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/sensors/lab3_hum_2/state payload={"t": 26.81473298201258, "h": 48.82072188670561, "ts": 1764432952, "sensor_id": "lab3_hum_2"}
+2025-11-29 16:15:52,526 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/sensors/lab2_temp_1/state matched_callbacks=1
+2025-11-29 16:15:52,531 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/sensors/lab2_temp_2/state matched_callbacks=1
+2025-11-29 16:15:52,535 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/sensors/lab2_hum_1/state matched_callbacks=1
+2025-11-29 16:15:52,538 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/sensors/lab2_hum_2/state matched_callbacks=1
+2025-11-29 16:15:52,541 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/sensors/lab3_temp_1/state matched_callbacks=1
+2025-11-29 16:15:52,546 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/sensors/lab3_temp_2/state matched_callbacks=1
+2025-11-29 16:15:52,549 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/sensors/lab3_hum_1/state matched_callbacks=1
+2025-11-29 16:15:52,552 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/sensors/lab3_hum_2/state matched_callbacks=1
+2025-11-29 16:15:53,114 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/actuators/lab3_fan_1/cmd payload={"action": "OFF", "source": "rules", "ts": 1764432953}
+2025-11-29 16:15:53,116 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/actuators/lab3_fan_1/cmd matched_callbacks=1
+2025-11-29 16:15:53,118 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/actuators/lab3_heater_1/cmd payload={"action": "ON", "source": "rules", "ts": 1764432953}
+2025-11-29 16:15:53,118 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/actuators/lab3_fan_1/state payload={"state": "OFF", "ts": 1764432953, "actuator_id": "lab3_fan_1"}
+2025-11-29 16:15:53,132 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/actuators/lab3_heater_1/cmd matched_callbacks=1
+2025-11-29 16:15:53,134 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/actuators/lab3_heater_1/state payload={"state": "ON", "ts": 1764432953, "actuator_id": "lab3_heater_1"}
+2025-11-29 16:15:53,162 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/actuators/lab3_fan_1/state matched_callbacks=1
+2025-11-29 16:15:53,165 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/actuators/lab3_heater_1/state matched_callbacks=1
+2025-11-29 16:16:01,577 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/sensors/lab1_temp_1/state payload={"t": 26.04140636935991, "h": 43.9529524373669, "ts": 1764432961, "sensor_id": "lab1_temp_1"}
+2025-11-29 16:16:01,584 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/sensors/lab1_temp_2/state payload={"t": 26.47734607797515, "h": 44.082072611333096, "ts": 1764432961, "sensor_id": "lab1_temp_2"}
+2025-11-29 16:16:01,586 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/sensors/lab1_temp_1/state matched_callbacks=1
+2025-11-29 16:16:01,593 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/sensors/lab1_hum_1/state payload={"t": 26.386893308635507, "h": 43.918367272218106, "ts": 1764432961, "sensor_id": "lab1_hum_1"}
+2025-11-29 16:16:01,608 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/sensors/lab1_hum_2/state payload={"t": 26.14566973525579, "h": 44.546022281937724, "ts": 1764432961, "sensor_id": "lab1_hum_2"}
+2025-11-29 16:16:01,616 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/sensors/lab2_temp_1/state payload={"t": 27.443374001547625, "h": 46.98793688622167, "ts": 1764432961, "sensor_id": "lab2_temp_1"}
+2025-11-29 16:16:01,617 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/sensors/lab1_temp_2/state matched_callbacks=1
+2025-11-29 16:16:01,624 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/sensors/lab2_temp_2/state payload={"t": 27.229499169161958, "h": 46.835914552315515, "ts": 1764432961, "sensor_id": "lab2_temp_2"}
+2025-11-29 16:16:01,645 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/sensors/lab2_hum_1/state payload={"t": 27.5691682274649, "h": 46.54583439595928, "ts": 1764432961, "sensor_id": "lab2_hum_1"}
+2025-11-29 16:16:01,660 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/sensors/lab1_hum_1/state matched_callbacks=1
+2025-11-29 16:16:01,661 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/sensors/lab2_hum_2/state payload={"t": 27.396499569923634, "h": 46.92259716258547, "ts": 1764432961, "sensor_id": "lab2_hum_2"}
+2025-11-29 16:16:01,677 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/sensors/lab3_temp_1/state payload={"t": 27.10759111335377, "h": 49.63359073602852, "ts": 1764432961, "sensor_id": "lab3_temp_1"}
+2025-11-29 16:16:01,683 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/sensors/lab1_hum_2/state matched_callbacks=1
+2025-11-29 16:16:01,685 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/sensors/lab3_temp_2/state payload={"t": 27.24206137918854, "h": 49.491679300786444, "ts": 1764432961, "sensor_id": "lab3_temp_2"}
+2025-11-29 16:16:01,697 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/sensors/lab3_hum_1/state payload={"t": 26.92327646866777, "h": 49.48858312553295, "ts": 1764432961, "sensor_id": "lab3_hum_1"}
+2025-11-29 16:16:01,711 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/sensors/lab2_temp_1/state matched_callbacks=1
+2025-11-29 16:16:01,712 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/sensors/lab3_hum_2/state payload={"t": 26.856972093400604, "h": 50.05387241050512, "ts": 1764432961, "sensor_id": "lab3_hum_2"}
+2025-11-29 16:16:01,737 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/sensors/lab2_temp_2/state matched_callbacks=1
+2025-11-29 16:16:01,772 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/sensors/lab2_hum_1/state matched_callbacks=1
+2025-11-29 16:16:01,785 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/sensors/lab2_hum_2/state matched_callbacks=1
+2025-11-29 16:16:01,790 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/sensors/lab3_temp_1/state matched_callbacks=1
+2025-11-29 16:16:01,801 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/sensors/lab3_temp_2/state matched_callbacks=1
+2025-11-29 16:16:01,806 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/sensors/lab3_hum_1/state matched_callbacks=1
+2025-11-29 16:16:01,810 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/sensors/lab3_hum_2/state matched_callbacks=1
+2025-11-29 16:16:02,629 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/actuators/lab1_fan_1/cmd payload={"action": "OFF", "source": "rules", "ts": 1764432962}
+2025-11-29 16:16:02,645 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/actuators/lab1_fan_1/cmd matched_callbacks=1
+2025-11-29 16:16:02,649 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/actuators/lab1_heater_1/cmd payload={"action": "ON", "source": "rules", "ts": 1764432962}
+2025-11-29 16:16:02,653 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/actuators/lab1_fan_1/state payload={"state": "OFF", "ts": 1764432962, "actuator_id": "lab1_fan_1"}
+2025-11-29 16:16:02,673 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/actuators/lab1_heater_1/cmd matched_callbacks=1
+2025-11-29 16:16:02,682 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/actuators/lab1_heater_1/state payload={"state": "ON", "ts": 1764432962, "actuator_id": "lab1_heater_1"}
+2025-11-29 16:16:02,704 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/actuators/lab1_fan_1/state matched_callbacks=1
+2025-11-29 16:16:02,713 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/actuators/lab1_heater_1/state matched_callbacks=1
+2025-11-29 16:16:11,553 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/sensors/lab1_temp_1/state payload={"t": 27.263283950367747, "h": 44.12329284200357, "ts": 1764432971, "sensor_id": "lab1_temp_1"}
+2025-11-29 16:16:11,562 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/sensors/lab1_temp_2/state payload={"t": 26.783165282566536, "h": 44.397480935481745, "ts": 1764432971, "sensor_id": "lab1_temp_2"}
+2025-11-29 16:16:11,565 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/sensors/lab1_temp_1/state matched_callbacks=1
+2025-11-29 16:16:11,571 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/sensors/lab1_hum_1/state payload={"t": 26.867979446393687, "h": 43.98992328469772, "ts": 1764432971, "sensor_id": "lab1_hum_1"}
+2025-11-29 16:16:11,588 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/sensors/lab1_hum_2/state payload={"t": 26.88545710267606, "h": 43.90248517344368, "ts": 1764432971, "sensor_id": "lab1_hum_2"}
+2025-11-29 16:16:11,595 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/sensors/lab1_temp_2/state matched_callbacks=1
+2025-11-29 16:16:11,601 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/sensors/lab2_temp_1/state payload={"t": 27.84636631362143, "h": 46.78817699574143, "ts": 1764432971, "sensor_id": "lab2_temp_1"}
+2025-11-29 16:16:11,613 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/sensors/lab2_temp_2/state payload={"t": 27.89019159577722, "h": 46.574850732091406, "ts": 1764432971, "sensor_id": "lab2_temp_2"}
+2025-11-29 16:16:11,623 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/sensors/lab1_hum_1/state matched_callbacks=1
+2025-11-29 16:16:11,625 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/sensors/lab2_hum_1/state payload={"t": 27.686583331554726, "h": 46.96509425424457, "ts": 1764432971, "sensor_id": "lab2_hum_1"}
+2025-11-29 16:16:11,647 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/sensors/lab2_hum_2/state payload={"t": 27.720310778898227, "h": 46.09326735800925, "ts": 1764432971, "sensor_id": "lab2_hum_2"}
+2025-11-29 16:16:11,656 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/sensors/lab1_hum_2/state matched_callbacks=1
+2025-11-29 16:16:11,658 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/sensors/lab3_temp_1/state payload={"t": 27.523382018333148, "h": 49.42007449357096, "ts": 1764432971, "sensor_id": "lab3_temp_1"}
+2025-11-29 16:16:11,673 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/sensors/lab3_temp_2/state payload={"t": 27.674623200071853, "h": 49.599784411481465, "ts": 1764432971, "sensor_id": "lab3_temp_2"}
+2025-11-29 16:16:11,676 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/sensors/lab2_temp_1/state matched_callbacks=1
+2025-11-29 16:16:11,677 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/sensors/lab3_hum_1/state payload={"t": 27.584086570507846, "h": 49.88817563094686, "ts": 1764432971, "sensor_id": "lab3_hum_1"}
+2025-11-29 16:16:11,684 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/sensors/lab3_hum_2/state payload={"t": 27.509753502389163, "h": 50.048311460675016, "ts": 1764432971, "sensor_id": "lab3_hum_2"}
+2025-11-29 16:16:11,687 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/sensors/lab2_temp_2/state matched_callbacks=1
+2025-11-29 16:16:11,699 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/sensors/lab2_hum_1/state matched_callbacks=1
+2025-11-29 16:16:11,711 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/sensors/lab2_hum_2/state matched_callbacks=1
+2025-11-29 16:16:11,733 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/sensors/lab3_temp_1/state matched_callbacks=1
+2025-11-29 16:16:11,759 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/sensors/lab3_temp_2/state matched_callbacks=1
+2025-11-29 16:16:11,776 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/sensors/lab3_hum_1/state matched_callbacks=1
+2025-11-29 16:16:11,794 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/sensors/lab3_hum_2/state matched_callbacks=1
+2025-11-29 16:16:22,077 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/sensors/lab1_temp_1/state payload={"t": 27.551680073705768, "h": 44.23528383809881, "ts": 1764432982, "sensor_id": "lab1_temp_1"}
+2025-11-29 16:16:22,082 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/sensors/lab1_temp_2/state payload={"t": 27.736709326867068, "h": 43.99157364125559, "ts": 1764432982, "sensor_id": "lab1_temp_2"}
+2025-11-29 16:16:22,083 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/sensors/lab1_temp_1/state matched_callbacks=1
+2025-11-29 16:16:22,085 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/sensors/lab1_hum_1/state payload={"t": 27.37718794275985, "h": 43.64071959955868, "ts": 1764432982, "sensor_id": "lab1_hum_1"}
+2025-11-29 16:16:22,088 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/sensors/lab1_hum_2/state payload={"t": 27.32426554426359, "h": 43.969214853235584, "ts": 1764432982, "sensor_id": "lab1_hum_2"}
+2025-11-29 16:16:22,089 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/sensors/lab1_temp_2/state matched_callbacks=1
+2025-11-29 16:16:22,089 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/sensors/lab2_temp_1/state payload={"t": 28.150055804808268, "h": 46.27288751456752, "ts": 1764432982, "sensor_id": "lab2_temp_1"}
+2025-11-29 16:16:22,091 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/sensors/lab2_temp_2/state payload={"t": 27.890641262608252, "h": 46.17685394409588, "ts": 1764432982, "sensor_id": "lab2_temp_2"}
+2025-11-29 16:16:22,092 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/sensors/lab1_hum_1/state matched_callbacks=1
+2025-11-29 16:16:22,092 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/sensors/lab2_hum_1/state payload={"t": 28.043965813645528, "h": 46.35463376847186, "ts": 1764432982, "sensor_id": "lab2_hum_1"}
+2025-11-29 16:16:22,098 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/sensors/lab2_hum_2/state payload={"t": 27.818812677292396, "h": 46.471940818778585, "ts": 1764432982, "sensor_id": "lab2_hum_2"}
+2025-11-29 16:16:22,100 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/sensors/lab1_hum_2/state matched_callbacks=1
+2025-11-29 16:16:22,100 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/sensors/lab3_temp_1/state payload={"t": 28.208055342343158, "h": 52.705616316483095, "ts": 1764432982, "sensor_id": "lab3_temp_1"}
+2025-11-29 16:16:22,104 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/sensors/lab3_temp_2/state payload={"t": 28.207543810778148, "h": 52.50781557567062, "ts": 1764432982, "sensor_id": "lab3_temp_2"}
+2025-11-29 16:16:22,105 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/sensors/lab2_temp_1/state matched_callbacks=1
+2025-11-29 16:16:22,107 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/sensors/lab3_hum_1/state payload={"t": 27.883245345625408, "h": 52.76267917759198, "ts": 1764432982, "sensor_id": "lab3_hum_1"}
+2025-11-29 16:16:22,110 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/sensors/lab3_hum_2/state payload={"t": 27.89121466936458, "h": 52.594218062749356, "ts": 1764432982, "sensor_id": "lab3_hum_2"}
+2025-11-29 16:16:22,111 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/sensors/lab2_temp_2/state matched_callbacks=1
+2025-11-29 16:16:22,116 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/sensors/lab2_hum_1/state matched_callbacks=1
+2025-11-29 16:16:22,119 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/sensors/lab2_hum_2/state matched_callbacks=1
+2025-11-29 16:16:22,122 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/sensors/lab3_temp_1/state matched_callbacks=1
+2025-11-29 16:16:22,129 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/sensors/lab3_temp_2/state matched_callbacks=1
+2025-11-29 16:16:22,134 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/sensors/lab3_hum_1/state matched_callbacks=1
+2025-11-29 16:16:22,137 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/sensors/lab3_hum_2/state matched_callbacks=1
+2025-11-29 16:16:31,654 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/sensors/lab1_temp_1/state payload={"t": 28.08940460030394, "h": 43.86793271084848, "ts": 1764432991, "sensor_id": "lab1_temp_1"}
+2025-11-29 16:16:31,659 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/sensors/lab1_temp_2/state payload={"t": 28.16537777819258, "h": 44.18046778956014, "ts": 1764432991, "sensor_id": "lab1_temp_2"}
+2025-11-29 16:16:31,660 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/sensors/lab1_temp_1/state matched_callbacks=1
+2025-11-29 16:16:31,661 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/sensors/lab1_hum_1/state payload={"t": 28.019085485311013, "h": 44.40784616372368, "ts": 1764432991, "sensor_id": "lab1_hum_1"}
+2025-11-29 16:16:31,663 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/sensors/lab1_hum_2/state payload={"t": 27.932064120807976, "h": 43.819003411805426, "ts": 1764432991, "sensor_id": "lab1_hum_2"}
+2025-11-29 16:16:31,665 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/sensors/lab2_temp_1/state payload={"t": 27.73976825559618, "h": 51.76508362213064, "ts": 1764432991, "sensor_id": "lab2_temp_1"}
+2025-11-29 16:16:31,665 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/sensors/lab1_temp_2/state matched_callbacks=1
+2025-11-29 16:16:31,666 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/sensors/lab2_temp_2/state payload={"t": 28.013431634589598, "h": 51.610450162828826, "ts": 1764432991, "sensor_id": "lab2_temp_2"}
+2025-11-29 16:16:31,669 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/sensors/lab2_hum_1/state payload={"t": 28.134582121759323, "h": 52.38446774922349, "ts": 1764432991, "sensor_id": "lab2_hum_1"}
+2025-11-29 16:16:31,671 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/sensors/lab2_hum_2/state payload={"t": 27.950838242207613, "h": 52.02630404402586, "ts": 1764432991, "sensor_id": "lab2_hum_2"}
+2025-11-29 16:16:31,671 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/sensors/lab1_hum_1/state matched_callbacks=1
+2025-11-29 16:16:31,672 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/sensors/lab3_temp_1/state payload={"t": 28.449860583894754, "h": 52.267011297349164, "ts": 1764432991, "sensor_id": "lab3_temp_1"}
+2025-11-29 16:16:31,675 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/sensors/lab3_temp_2/state payload={"t": 28.407331386992645, "h": 52.526481801769236, "ts": 1764432991, "sensor_id": "lab3_temp_2"}
+2025-11-29 16:16:31,677 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/sensors/lab3_hum_1/state payload={"t": 28.326756435011593, "h": 52.08501188310403, "ts": 1764432991, "sensor_id": "lab3_hum_1"}
+2025-11-29 16:16:31,677 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/sensors/lab1_hum_2/state matched_callbacks=1
+2025-11-29 16:16:31,693 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/sensors/lab3_hum_2/state payload={"t": 28.642956465144767, "h": 51.984700186983154, "ts": 1764432991, "sensor_id": "lab3_hum_2"}
+2025-11-29 16:16:31,697 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/sensors/lab2_temp_1/state matched_callbacks=1
+2025-11-29 16:16:31,700 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/sensors/lab2_temp_2/state matched_callbacks=1
+2025-11-29 16:16:31,703 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/sensors/lab2_hum_1/state matched_callbacks=1
+2025-11-29 16:16:31,705 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/sensors/lab2_hum_2/state matched_callbacks=1
+2025-11-29 16:16:31,708 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/sensors/lab3_temp_1/state matched_callbacks=1
+2025-11-29 16:16:31,713 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/sensors/lab3_temp_2/state matched_callbacks=1
+2025-11-29 16:16:31,716 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/sensors/lab3_hum_1/state matched_callbacks=1
+2025-11-29 16:16:31,718 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/sensors/lab3_hum_2/state matched_callbacks=1
+2025-11-29 16:16:41,431 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/sensors/lab1_temp_1/state payload={"t": 28.54774079805309, "h": 44.30740414159113, "ts": 1764433001, "sensor_id": "lab1_temp_1"}
+2025-11-29 16:16:41,437 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/sensors/lab1_temp_2/state payload={"t": 28.657258045768206, "h": 44.5106590860832, "ts": 1764433001, "sensor_id": "lab1_temp_2"}
+2025-11-29 16:16:41,438 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/sensors/lab1_temp_1/state matched_callbacks=1
+2025-11-29 16:16:41,446 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/sensors/lab1_hum_1/state payload={"t": 28.532282504921326, "h": 45.00024233413428, "ts": 1764433001, "sensor_id": "lab1_hum_1"}
+2025-11-29 16:16:41,463 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/sensors/lab1_hum_2/state payload={"t": 28.437527496190548, "h": 44.6372251905468, "ts": 1764433001, "sensor_id": "lab1_hum_2"}
+2025-11-29 16:16:41,474 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/sensors/lab2_temp_1/state payload={"t": 28.319908811237084, "h": 50.94683194080448, "ts": 1764433001, "sensor_id": "lab2_temp_1"}
+2025-11-29 16:16:41,475 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/sensors/lab1_temp_2/state matched_callbacks=1
+2025-11-29 16:16:41,486 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/sensors/lab2_temp_2/state payload={"t": 28.522616266274245, "h": 50.808816002973735, "ts": 1764433001, "sensor_id": "lab2_temp_2"}
+2025-11-29 16:16:41,506 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/sensors/lab2_hum_1/state payload={"t": 28.331280195897957, "h": 51.13189062344042, "ts": 1764433001, "sensor_id": "lab2_hum_1"}
+2025-11-29 16:16:41,512 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/sensors/lab1_hum_1/state matched_callbacks=1
+2025-11-29 16:16:41,515 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/sensors/lab2_hum_2/state payload={"t": 28.435589112731602, "h": 50.484060664639586, "ts": 1764433001, "sensor_id": "lab2_hum_2"}
+2025-11-29 16:16:41,526 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/sensors/lab3_temp_1/state payload={"t": 29.222337132534193, "h": 52.54136001002633, "ts": 1764433001, "sensor_id": "lab3_temp_1"}
+2025-11-29 16:16:41,529 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/sensors/lab1_hum_2/state matched_callbacks=1
+2025-11-29 16:16:41,530 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/sensors/lab3_temp_2/state payload={"t": 29.08506261545216, "h": 52.54616691823136, "ts": 1764433001, "sensor_id": "lab3_temp_2"}
+2025-11-29 16:16:41,536 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/sensors/lab3_hum_1/state payload={"t": 29.10391222469635, "h": 52.608159671950986, "ts": 1764433001, "sensor_id": "lab3_hum_1"}
+2025-11-29 16:16:41,538 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/sensors/lab2_temp_1/state matched_callbacks=1
+2025-11-29 16:16:41,538 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/sensors/lab3_hum_2/state payload={"t": 29.08786690414019, "h": 52.93002977185015, "ts": 1764433001, "sensor_id": "lab3_hum_2"}
+2025-11-29 16:16:41,546 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/sensors/lab2_temp_2/state matched_callbacks=1
+2025-11-29 16:16:41,560 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/sensors/lab2_hum_1/state matched_callbacks=1
+2025-11-29 16:16:41,573 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/sensors/lab2_hum_2/state matched_callbacks=1
+2025-11-29 16:16:41,584 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/sensors/lab3_temp_1/state matched_callbacks=1
+2025-11-29 16:16:41,590 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/sensors/lab3_temp_2/state matched_callbacks=1
+2025-11-29 16:16:41,602 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/sensors/lab3_hum_1/state matched_callbacks=1
+2025-11-29 16:16:41,611 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/sensors/lab3_hum_2/state matched_callbacks=1
+2025-11-29 16:16:42,581 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/actuators/lab1_fan_1/cmd payload={"action": "ON", "source": "rules", "ts": 1764433002}
+2025-11-29 16:16:42,591 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/actuators/lab2_heater_1/cmd payload={"action": "OFF", "source": "rules", "ts": 1764433002}
+2025-11-29 16:16:42,593 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/actuators/lab1_fan_1/cmd matched_callbacks=1
+2025-11-29 16:16:42,607 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/actuators/lab1_fan_1/state payload={"state": "ON", "ts": 1764433002, "actuator_id": "lab1_fan_1"}
+2025-11-29 16:16:42,616 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/actuators/lab2_heater_1/cmd matched_callbacks=1
+2025-11-29 16:16:42,624 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/actuators/lab2_heater_1/state payload={"state": "OFF", "ts": 1764433002, "actuator_id": "lab2_heater_1"}
+2025-11-29 16:16:42,643 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/actuators/lab1_fan_1/state matched_callbacks=1
+2025-11-29 16:16:42,659 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/actuators/lab2_heater_1/state matched_callbacks=1
+2025-11-29 16:16:52,363 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/sensors/lab1_temp_1/state payload={"t": 28.90275035353251, "h": 44.04064951640991, "ts": 1764433012, "sensor_id": "lab1_temp_1"}
+2025-11-29 16:16:52,371 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/sensors/lab1_temp_2/state payload={"t": 28.783792406006675, "h": 44.04396839407317, "ts": 1764433012, "sensor_id": "lab1_temp_2"}
+2025-11-29 16:16:52,373 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/sensors/lab1_temp_1/state matched_callbacks=1
+2025-11-29 16:16:52,384 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/sensors/lab1_hum_1/state payload={"t": 28.828495636679094, "h": 44.672387694103676, "ts": 1764433012, "sensor_id": "lab1_hum_1"}
+2025-11-29 16:16:52,400 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/sensors/lab1_hum_2/state payload={"t": 28.769427616210763, "h": 44.11858862257759, "ts": 1764433012, "sensor_id": "lab1_hum_2"}
+2025-11-29 16:16:52,404 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/sensors/lab1_temp_2/state matched_callbacks=1
+2025-11-29 16:16:52,404 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/sensors/lab2_temp_1/state payload={"t": 27.87908625078355, "h": 50.02700033538432, "ts": 1764433012, "sensor_id": "lab2_temp_1"}
+2025-11-29 16:16:52,423 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/sensors/lab2_temp_2/state payload={"t": 27.548244392427357, "h": 50.22991065893862, "ts": 1764433012, "sensor_id": "lab2_temp_2"}
+2025-11-29 16:16:52,433 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/sensors/lab1_hum_1/state matched_callbacks=1
+2025-11-29 16:16:52,435 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/sensors/lab2_hum_1/state payload={"t": 27.84785828465746, "h": 49.88336794542738, "ts": 1764433012, "sensor_id": "lab2_hum_1"}
+2025-11-29 16:16:52,460 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/sensors/lab2_hum_2/state payload={"t": 27.67764992992248, "h": 49.64856192582162, "ts": 1764433012, "sensor_id": "lab2_hum_2"}
+2025-11-29 16:16:52,472 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/sensors/lab1_hum_2/state matched_callbacks=1
+2025-11-29 16:16:52,477 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/sensors/lab3_temp_1/state payload={"t": 29.710542658030885, "h": 52.1916723934759, "ts": 1764433012, "sensor_id": "lab3_temp_1"}
+2025-11-29 16:16:52,495 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/sensors/lab3_temp_2/state payload={"t": 29.450097122228172, "h": 52.558653091790845, "ts": 1764433012, "sensor_id": "lab3_temp_2"}
+2025-11-29 16:16:52,501 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/sensors/lab2_temp_1/state matched_callbacks=1
+2025-11-29 16:16:52,504 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/sensors/lab3_hum_1/state payload={"t": 29.40976189975296, "h": 52.59082148233362, "ts": 1764433012, "sensor_id": "lab3_hum_1"}
+2025-11-29 16:16:52,512 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/sensors/lab3_hum_2/state payload={"t": 29.404463861674483, "h": 52.07325539334239, "ts": 1764433012, "sensor_id": "lab3_hum_2"}
+2025-11-29 16:16:52,518 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/sensors/lab2_temp_2/state matched_callbacks=1
+2025-11-29 16:16:52,539 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/sensors/lab2_hum_1/state matched_callbacks=1
+2025-11-29 16:16:52,552 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/sensors/lab2_hum_2/state matched_callbacks=1
+2025-11-29 16:16:52,574 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/sensors/lab3_temp_1/state matched_callbacks=1
+2025-11-29 16:16:52,589 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/sensors/lab3_temp_2/state matched_callbacks=1
+2025-11-29 16:16:52,595 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/actuators/lab1_heater_1/cmd payload={"action": "OFF", "source": "rules", "ts": 1764433012}
+2025-11-29 16:16:52,597 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/sensors/lab3_hum_1/state matched_callbacks=1
+2025-11-29 16:16:52,598 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/actuators/lab1_heater_1/cmd matched_callbacks=1
+2025-11-29 16:16:52,601 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/actuators/lab1_heater_1/state payload={"state": "OFF", "ts": 1764433012, "actuator_id": "lab1_heater_1"}
+2025-11-29 16:16:52,603 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/sensors/lab3_hum_2/state matched_callbacks=1
+2025-11-29 16:16:52,606 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/actuators/lab1_heater_1/state matched_callbacks=1
+2025-11-29 16:16:57,584 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/actuators/lab3_fan_1/cmd payload={"action": "ON", "source": "rules", "ts": 1764433017}
+2025-11-29 16:16:57,588 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/actuators/lab3_fan_1/cmd matched_callbacks=1
+2025-11-29 16:16:57,606 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/actuators/lab3_fan_1/state payload={"state": "ON", "ts": 1764433017, "actuator_id": "lab3_fan_1"}
+2025-11-29 16:16:57,630 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/actuators/lab3_fan_1/state matched_callbacks=1
+2025-11-29 16:17:02,327 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/sensors/lab1_temp_1/state payload={"t": 28.47652445250874, "h": 45.90965659480308, "ts": 1764433022, "sensor_id": "lab1_temp_1"}
+2025-11-29 16:17:02,332 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/sensors/lab1_temp_2/state payload={"t": 28.484950175146967, "h": 46.13161542526311, "ts": 1764433022, "sensor_id": "lab1_temp_2"}
+2025-11-29 16:17:02,333 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/sensors/lab1_temp_1/state matched_callbacks=1
+2025-11-29 16:17:02,337 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/sensors/lab1_hum_1/state payload={"t": 28.29111750214121, "h": 45.55274216615116, "ts": 1764433022, "sensor_id": "lab1_hum_1"}
+2025-11-29 16:17:02,343 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/sensors/lab1_hum_2/state payload={"t": 28.264572697461272, "h": 45.52579695782762, "ts": 1764433022, "sensor_id": "lab1_hum_2"}
+2025-11-29 16:17:02,349 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/sensors/lab2_temp_1/state payload={"t": 27.535654156909228, "h": 49.208247638115765, "ts": 1764433022, "sensor_id": "lab2_temp_1"}
+2025-11-29 16:17:02,349 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/sensors/lab1_temp_2/state matched_callbacks=1
+2025-11-29 16:17:02,352 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/sensors/lab2_temp_2/state payload={"t": 27.418924340410015, "h": 49.17583389019021, "ts": 1764433022, "sensor_id": "lab2_temp_2"}
+2025-11-29 16:17:02,356 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/sensors/lab2_hum_1/state payload={"t": 27.701033644035576, "h": 49.024450249027495, "ts": 1764433022, "sensor_id": "lab2_hum_1"}
+2025-11-29 16:17:02,359 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/sensors/lab1_hum_1/state matched_callbacks=1
+2025-11-29 16:17:02,360 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/sensors/lab2_hum_2/state payload={"t": 27.49912676685092, "h": 48.94947466746379, "ts": 1764433022, "sensor_id": "lab2_hum_2"}
+2025-11-29 16:17:02,363 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/sensors/lab3_temp_1/state payload={"t": 29.586562475588952, "h": 51.4434989478036, "ts": 1764433022, "sensor_id": "lab3_temp_1"}
+2025-11-29 16:17:02,369 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/sensors/lab3_temp_2/state payload={"t": 29.620557379145637, "h": 51.354678811331794, "ts": 1764433022, "sensor_id": "lab3_temp_2"}
+2025-11-29 16:17:02,370 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/sensors/lab1_hum_2/state matched_callbacks=1
+2025-11-29 16:17:02,374 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/sensors/lab3_hum_1/state payload={"t": 29.654389524026207, "h": 52.00664208081645, "ts": 1764433022, "sensor_id": "lab3_hum_1"}
+2025-11-29 16:17:02,380 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/sensors/lab3_hum_2/state payload={"t": 29.72825602215412, "h": 51.16303642095241, "ts": 1764433022, "sensor_id": "lab3_hum_2"}
+2025-11-29 16:17:02,386 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/sensors/lab2_temp_1/state matched_callbacks=1
+2025-11-29 16:17:02,394 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/sensors/lab2_temp_2/state matched_callbacks=1
+2025-11-29 16:17:02,406 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/sensors/lab2_hum_1/state matched_callbacks=1
+2025-11-29 16:17:02,412 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/sensors/lab2_hum_2/state matched_callbacks=1
+2025-11-29 16:17:02,423 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/sensors/lab3_temp_1/state matched_callbacks=1
+2025-11-29 16:17:02,430 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/sensors/lab3_temp_2/state matched_callbacks=1
+2025-11-29 16:17:02,440 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/sensors/lab3_hum_1/state matched_callbacks=1
+2025-11-29 16:17:02,447 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/sensors/lab3_hum_2/state matched_callbacks=1
+2025-11-29 16:17:07,135 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/actuators/lab3_heater_1/cmd payload={"action": "OFF", "source": "rules", "ts": 1764433027}
+2025-11-29 16:17:07,136 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/actuators/lab3_heater_1/cmd matched_callbacks=1
+2025-11-29 16:17:07,137 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/actuators/lab3_heater_1/state payload={"state": "OFF", "ts": 1764433027, "actuator_id": "lab3_heater_1"}
+2025-11-29 16:17:07,181 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/actuators/lab3_heater_1/state matched_callbacks=1
+2025-11-29 16:17:12,718 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/sensors/lab1_temp_1/state payload={"t": 28.323041542310488, "h": 45.858552152476136, "ts": 1764433032, "sensor_id": "lab1_temp_1"}
+2025-11-29 16:17:12,728 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/sensors/lab1_temp_2/state payload={"t": 27.80084426277894, "h": 45.66505096832396, "ts": 1764433032, "sensor_id": "lab1_temp_2"}
+2025-11-29 16:17:12,730 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/sensors/lab1_temp_1/state matched_callbacks=1
+2025-11-29 16:17:12,738 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/sensors/lab1_hum_1/state payload={"t": 28.057615218635103, "h": 46.10804090701915, "ts": 1764433032, "sensor_id": "lab1_hum_1"}
+2025-11-29 16:17:12,754 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/sensors/lab1_hum_2/state payload={"t": 27.982876745637626, "h": 46.32381170221265, "ts": 1764433032, "sensor_id": "lab1_hum_2"}
+2025-11-29 16:17:12,764 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/sensors/lab2_temp_1/state payload={"t": 27.309306025892532, "h": 49.0111064677645, "ts": 1764433032, "sensor_id": "lab2_temp_1"}
+2025-11-29 16:17:12,765 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/sensors/lab1_temp_2/state matched_callbacks=1
+2025-11-29 16:17:12,774 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/sensors/lab2_temp_2/state payload={"t": 26.873050967768137, "h": 49.26327071882709, "ts": 1764433032, "sensor_id": "lab2_temp_2"}
+2025-11-29 16:17:12,791 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/sensors/lab2_hum_1/state payload={"t": 27.07994926057538, "h": 49.02578006119184, "ts": 1764433032, "sensor_id": "lab2_hum_1"}
+2025-11-29 16:17:12,797 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/sensors/lab1_hum_1/state matched_callbacks=1
+2025-11-29 16:17:12,803 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/sensors/lab2_hum_2/state payload={"t": 26.948956665236164, "h": 49.01512287566779, "ts": 1764433032, "sensor_id": "lab2_hum_2"}
+2025-11-29 16:17:12,821 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/sensors/lab3_temp_1/state payload={"t": 29.347451049554913, "h": 50.67887997724068, "ts": 1764433032, "sensor_id": "lab3_temp_1"}
+2025-11-29 16:17:12,833 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/sensors/lab3_temp_2/state payload={"t": 28.826273506792774, "h": 50.83224670075682, "ts": 1764433032, "sensor_id": "lab3_temp_2"}
+2025-11-29 16:17:12,835 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/sensors/lab1_hum_2/state matched_callbacks=1
+2025-11-29 16:17:12,843 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/sensors/lab3_hum_1/state payload={"t": 29.155596554708364, "h": 50.79494867599602, "ts": 1764433032, "sensor_id": "lab3_hum_1"}
+2025-11-29 16:17:12,858 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/sensors/lab3_hum_2/state payload={"t": 29.065494798187522, "h": 50.89880990007628, "ts": 1764433032, "sensor_id": "lab3_hum_2"}
+2025-11-29 16:17:12,865 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/sensors/lab2_temp_1/state matched_callbacks=1
+2025-11-29 16:17:12,882 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/sensors/lab2_temp_2/state matched_callbacks=1
+2025-11-29 16:17:12,900 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/sensors/lab2_hum_1/state matched_callbacks=1
+2025-11-29 16:17:12,920 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/sensors/lab2_hum_2/state matched_callbacks=1
+2025-11-29 16:17:12,939 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/sensors/lab3_temp_1/state matched_callbacks=1
+2025-11-29 16:17:12,955 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/sensors/lab3_temp_2/state matched_callbacks=1
+2025-11-29 16:17:12,964 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/sensors/lab3_hum_1/state matched_callbacks=1
+2025-11-29 16:17:12,972 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/sensors/lab3_hum_2/state matched_callbacks=1
+2025-11-29 16:17:22,946 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/sensors/lab1_temp_1/state payload={"t": 27.83803598593523, "h": 45.7974025814134, "ts": 1764433042, "sensor_id": "lab1_temp_1"}
+2025-11-29 16:17:22,948 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/sensors/lab1_temp_2/state payload={"t": 27.509488011687758, "h": 45.63686187116358, "ts": 1764433042, "sensor_id": "lab1_temp_2"}
+2025-11-29 16:17:22,949 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/sensors/lab1_temp_1/state matched_callbacks=1
+2025-11-29 16:17:22,950 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/sensors/lab1_hum_1/state payload={"t": 27.6159605154885, "h": 45.91207111543913, "ts": 1764433042, "sensor_id": "lab1_hum_1"}
+2025-11-29 16:17:22,952 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/sensors/lab1_hum_2/state payload={"t": 27.80188903460331, "h": 45.28549626276346, "ts": 1764433042, "sensor_id": "lab1_hum_2"}
+2025-11-29 16:17:22,953 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/sensors/lab2_temp_1/state payload={"t": 26.342768946511168, "h": 48.307516972925214, "ts": 1764433042, "sensor_id": "lab2_temp_1"}
+2025-11-29 16:17:22,953 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/sensors/lab1_temp_2/state matched_callbacks=1
+2025-11-29 16:17:22,954 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/sensors/lab2_temp_2/state payload={"t": 26.411049456066568, "h": 47.96311310801391, "ts": 1764433042, "sensor_id": "lab2_temp_2"}
+2025-11-29 16:17:22,956 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/sensors/lab2_hum_1/state payload={"t": 26.540982934711195, "h": 47.59912063276887, "ts": 1764433042, "sensor_id": "lab2_hum_1"}
+2025-11-29 16:17:22,957 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/sensors/lab1_hum_1/state matched_callbacks=1
+2025-11-29 16:17:22,957 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/sensors/lab2_hum_2/state payload={"t": 26.506510150851625, "h": 48.468917860967125, "ts": 1764433042, "sensor_id": "lab2_hum_2"}
+2025-11-29 16:17:22,959 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/sensors/lab3_temp_1/state payload={"t": 28.979390086487257, "h": 49.87341487411124, "ts": 1764433042, "sensor_id": "lab3_temp_1"}
+2025-11-29 16:17:22,960 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/sensors/lab1_hum_2/state matched_callbacks=1
+2025-11-29 16:17:22,960 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/sensors/lab3_temp_2/state payload={"t": 28.59258413622274, "h": 50.20589608726138, "ts": 1764433042, "sensor_id": "lab3_temp_2"}
+2025-11-29 16:17:22,962 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/sensors/lab3_hum_1/state payload={"t": 28.878480886503006, "h": 50.11743595303762, "ts": 1764433042, "sensor_id": "lab3_hum_1"}
+2025-11-29 16:17:22,963 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/sensors/lab3_hum_2/state payload={"t": 28.839561245616935, "h": 50.59770018203816, "ts": 1764433042, "sensor_id": "lab3_hum_2"}
+2025-11-29 16:17:22,964 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/sensors/lab2_temp_1/state matched_callbacks=1
+2025-11-29 16:17:22,968 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/sensors/lab2_temp_2/state matched_callbacks=1
+2025-11-29 16:17:22,971 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/sensors/lab2_hum_1/state matched_callbacks=1
+2025-11-29 16:17:22,973 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/sensors/lab2_hum_2/state matched_callbacks=1
+2025-11-29 16:17:22,977 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/sensors/lab3_temp_1/state matched_callbacks=1
+2025-11-29 16:17:22,980 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/sensors/lab3_temp_2/state matched_callbacks=1
+2025-11-29 16:17:22,982 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/sensors/lab3_hum_1/state matched_callbacks=1
+2025-11-29 16:17:22,986 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/sensors/lab3_hum_2/state matched_callbacks=1
+2025-11-29 16:17:32,026 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/sensors/lab1_temp_1/state payload={"t": 27.620303706030715, "h": 44.98259430910731, "ts": 1764433052, "sensor_id": "lab1_temp_1"}
+2025-11-29 16:17:32,028 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/sensors/lab1_temp_2/state payload={"t": 27.411013024958965, "h": 44.90610400523686, "ts": 1764433052, "sensor_id": "lab1_temp_2"}
+2025-11-29 16:17:32,029 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/sensors/lab1_temp_1/state matched_callbacks=1
+2025-11-29 16:17:32,031 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/sensors/lab1_hum_1/state payload={"t": 27.518432349476, "h": 44.58828289323508, "ts": 1764433052, "sensor_id": "lab1_hum_1"}
+2025-11-29 16:17:32,035 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/sensors/lab1_hum_2/state payload={"t": 27.5377902686954, "h": 44.970538968464275, "ts": 1764433052, "sensor_id": "lab1_hum_2"}
+2025-11-29 16:17:32,037 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/sensors/lab1_temp_2/state matched_callbacks=1
+2025-11-29 16:17:32,038 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/sensors/lab2_temp_1/state payload={"t": 26.351309622738082, "h": 47.25831788146882, "ts": 1764433052, "sensor_id": "lab2_temp_1"}
+2025-11-29 16:17:32,041 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/sensors/lab2_temp_2/state payload={"t": 26.434959237423488, "h": 47.34161763874158, "ts": 1764433052, "sensor_id": "lab2_temp_2"}
+2025-11-29 16:17:32,042 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/sensors/lab1_hum_1/state matched_callbacks=1
+2025-11-29 16:17:32,043 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/sensors/lab2_hum_1/state payload={"t": 26.381923440804332, "h": 47.17447703706913, "ts": 1764433052, "sensor_id": "lab2_hum_1"}
+2025-11-29 16:17:32,046 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/sensors/lab2_hum_2/state payload={"t": 26.43082929531139, "h": 47.89583806643162, "ts": 1764433052, "sensor_id": "lab2_hum_2"}
+2025-11-29 16:17:32,047 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/sensors/lab1_hum_2/state matched_callbacks=1
+2025-11-29 16:17:32,048 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/sensors/lab3_temp_1/state payload={"t": 28.636672997523792, "h": 49.038020252933585, "ts": 1764433052, "sensor_id": "lab3_temp_1"}
+2025-11-29 16:17:32,051 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/sensors/lab3_temp_2/state payload={"t": 28.54676012111602, "h": 49.30996623408378, "ts": 1764433052, "sensor_id": "lab3_temp_2"}
+2025-11-29 16:17:32,052 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/sensors/lab2_temp_1/state matched_callbacks=1
+2025-11-29 16:17:32,052 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/sensors/lab3_hum_1/state payload={"t": 28.76330805505044, "h": 48.78148003483953, "ts": 1764433052, "sensor_id": "lab3_hum_1"}
+2025-11-29 16:17:32,055 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/sensors/lab3_hum_2/state payload={"t": 28.70759263995599, "h": 49.15839645863196, "ts": 1764433052, "sensor_id": "lab3_hum_2"}
+2025-11-29 16:17:32,055 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/sensors/lab2_temp_2/state matched_callbacks=1
+2025-11-29 16:17:32,058 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/sensors/lab2_hum_1/state matched_callbacks=1
+2025-11-29 16:17:32,061 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/sensors/lab2_hum_2/state matched_callbacks=1
+2025-11-29 16:17:32,064 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/sensors/lab3_temp_1/state matched_callbacks=1
+2025-11-29 16:17:32,067 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/sensors/lab3_temp_2/state matched_callbacks=1
+2025-11-29 16:17:32,072 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/sensors/lab3_hum_1/state matched_callbacks=1
+2025-11-29 16:17:32,075 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/sensors/lab3_hum_2/state matched_callbacks=1
+2025-11-29 16:17:41,323 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/sensors/lab1_temp_1/state payload={"t": 27.488322664138927, "h": 45.17873961934057, "ts": 1764433061, "sensor_id": "lab1_temp_1"}
+2025-11-29 16:17:41,324 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/sensors/lab1_temp_2/state payload={"t": 27.69977577014397, "h": 44.89221418096685, "ts": 1764433061, "sensor_id": "lab1_temp_2"}
+2025-11-29 16:17:41,325 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/sensors/lab1_temp_1/state matched_callbacks=1
+2025-11-29 16:17:41,326 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/sensors/lab1_hum_1/state payload={"t": 27.646688050208823, "h": 45.24201519732037, "ts": 1764433061, "sensor_id": "lab1_hum_1"}
+2025-11-29 16:17:41,328 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/sensors/lab1_hum_2/state payload={"t": 27.52122739945636, "h": 45.3331940492235, "ts": 1764433061, "sensor_id": "lab1_hum_2"}
+2025-11-29 16:17:41,329 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/sensors/lab1_temp_2/state matched_callbacks=1
+2025-11-29 16:17:41,330 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/sensors/lab2_temp_1/state payload={"t": 26.11350946706065, "h": 47.23738009905027, "ts": 1764433061, "sensor_id": "lab2_temp_1"}
+2025-11-29 16:17:41,332 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/sensors/lab2_temp_2/state payload={"t": 26.036262553724825, "h": 46.97448790009011, "ts": 1764433061, "sensor_id": "lab2_temp_2"}
+2025-11-29 16:17:41,333 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/sensors/lab1_hum_1/state matched_callbacks=1
+2025-11-29 16:17:41,334 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/sensors/lab2_hum_1/state payload={"t": 26.220208777682824, "h": 46.56261969002325, "ts": 1764433061, "sensor_id": "lab2_hum_1"}
+2025-11-29 16:17:41,336 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/sensors/lab2_hum_2/state payload={"t": 26.16603526367731, "h": 46.60297346893112, "ts": 1764433061, "sensor_id": "lab2_hum_2"}
+2025-11-29 16:17:41,336 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/sensors/lab1_hum_2/state matched_callbacks=1
+2025-11-29 16:17:41,337 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/sensors/lab3_temp_1/state payload={"t": 28.5186995005651, "h": 48.431453355574874, "ts": 1764433061, "sensor_id": "lab3_temp_1"}
+2025-11-29 16:17:41,339 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/sensors/lab3_temp_2/state payload={"t": 28.370387261796303, "h": 48.64512399462181, "ts": 1764433061, "sensor_id": "lab3_temp_2"}
+2025-11-29 16:17:41,340 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/sensors/lab2_temp_1/state matched_callbacks=1
+2025-11-29 16:17:41,340 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/sensors/lab3_hum_1/state payload={"t": 28.200677287770127, "h": 48.30929660776973, "ts": 1764433061, "sensor_id": "lab3_hum_1"}
+2025-11-29 16:17:41,342 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/sensors/lab3_hum_2/state payload={"t": 28.107505449314683, "h": 49.08064113578895, "ts": 1764433061, "sensor_id": "lab3_hum_2"}
+2025-11-29 16:17:41,343 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/sensors/lab2_temp_2/state matched_callbacks=1
+2025-11-29 16:17:41,347 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/sensors/lab2_hum_1/state matched_callbacks=1
+2025-11-29 16:17:41,350 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/sensors/lab2_hum_2/state matched_callbacks=1
+2025-11-29 16:17:41,354 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/sensors/lab3_temp_1/state matched_callbacks=1
+2025-11-29 16:17:41,357 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/sensors/lab3_temp_2/state matched_callbacks=1
+2025-11-29 16:17:41,361 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/sensors/lab3_hum_1/state matched_callbacks=1
+2025-11-29 16:17:41,363 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/sensors/lab3_hum_2/state matched_callbacks=1
+2025-11-29 16:17:51,161 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/sensors/lab1_temp_1/state payload={"t": 27.327366509707417, "h": 44.92277724395578, "ts": 1764433071, "sensor_id": "lab1_temp_1"}
+2025-11-29 16:17:51,169 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/sensors/lab1_temp_2/state payload={"t": 27.29582440253348, "h": 44.70015372788865, "ts": 1764433071, "sensor_id": "lab1_temp_2"}
+2025-11-29 16:17:51,170 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/sensors/lab1_temp_1/state matched_callbacks=1
+2025-11-29 16:17:51,175 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/sensors/lab1_hum_1/state payload={"t": 27.26549697092381, "h": 44.479141512259694, "ts": 1764433071, "sensor_id": "lab1_hum_1"}
+2025-11-29 16:17:51,192 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/sensors/lab1_hum_2/state payload={"t": 27.429969690994948, "h": 45.08431489718312, "ts": 1764433071, "sensor_id": "lab1_hum_2"}
+2025-11-29 16:17:51,199 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/sensors/lab1_temp_2/state matched_callbacks=1
+2025-11-29 16:17:51,204 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/sensors/lab2_temp_1/state payload={"t": 26.01052796919203, "h": 46.93201077746661, "ts": 1764433071, "sensor_id": "lab2_temp_1"}
+2025-11-29 16:17:51,229 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/sensors/lab2_temp_2/state payload={"t": 25.538318137315486, "h": 46.73508980104401, "ts": 1764433071, "sensor_id": "lab2_temp_2"}
+2025-11-29 16:17:51,238 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/sensors/lab2_hum_1/state payload={"t": 25.548722724503556, "h": 47.33367614610368, "ts": 1764433071, "sensor_id": "lab2_hum_1"}
+2025-11-29 16:17:51,239 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/sensors/lab1_hum_1/state matched_callbacks=1
+2025-11-29 16:17:51,246 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/sensors/lab2_hum_2/state payload={"t": 25.87053467519571, "h": 46.279371977666315, "ts": 1764433071, "sensor_id": "lab2_hum_2"}
+2025-11-29 16:17:51,266 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/sensors/lab3_temp_1/state payload={"t": 27.7811644278939, "h": 48.17093526018209, "ts": 1764433071, "sensor_id": "lab3_temp_1"}
+2025-11-29 16:17:51,271 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/sensors/lab1_hum_2/state matched_callbacks=1
+2025-11-29 16:17:51,271 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/sensors/lab3_temp_2/state payload={"t": 28.09856142566883, "h": 48.22821522329548, "ts": 1764433071, "sensor_id": "lab3_temp_2"}
+2025-11-29 16:17:51,285 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/sensors/lab3_hum_1/state payload={"t": 27.939140566199484, "h": 48.40619003441107, "ts": 1764433071, "sensor_id": "lab3_hum_1"}
+2025-11-29 16:17:51,289 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/sensors/lab2_temp_1/state matched_callbacks=1
+2025-11-29 16:17:51,290 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/sensors/lab3_hum_2/state payload={"t": 27.722299544662974, "h": 48.60114902859679, "ts": 1764433071, "sensor_id": "lab3_hum_2"}
+2025-11-29 16:17:51,304 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/sensors/lab2_temp_2/state matched_callbacks=1
+2025-11-29 16:17:51,313 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/sensors/lab2_hum_1/state matched_callbacks=1
+2025-11-29 16:17:51,323 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/sensors/lab2_hum_2/state matched_callbacks=1
+2025-11-29 16:17:51,329 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/sensors/lab3_temp_1/state matched_callbacks=1
+2025-11-29 16:17:51,335 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/sensors/lab3_temp_2/state matched_callbacks=1
+2025-11-29 16:17:51,339 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/sensors/lab3_hum_1/state matched_callbacks=1
+2025-11-29 16:17:51,341 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/sensors/lab3_hum_2/state matched_callbacks=1
+2025-11-29 16:18:01,264 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/sensors/lab1_temp_1/state payload={"t": 27.037432104461068, "h": 44.181194119489376, "ts": 1764433081, "sensor_id": "lab1_temp_1"}
+2025-11-29 16:18:01,265 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/sensors/lab1_temp_2/state payload={"t": 27.17938247155121, "h": 43.919791538940935, "ts": 1764433081, "sensor_id": "lab1_temp_2"}
+2025-11-29 16:18:01,266 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/sensors/lab1_temp_1/state matched_callbacks=1
+2025-11-29 16:18:01,267 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/sensors/lab1_hum_1/state payload={"t": 27.046697964360074, "h": 43.397801986299086, "ts": 1764433081, "sensor_id": "lab1_hum_1"}
+2025-11-29 16:18:01,270 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/sensors/lab1_hum_2/state payload={"t": 27.139186246789578, "h": 43.70393245188891, "ts": 1764433081, "sensor_id": "lab1_hum_2"}
+2025-11-29 16:18:01,271 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/sensors/lab1_temp_2/state matched_callbacks=1
+2025-11-29 16:18:01,272 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/sensors/lab2_temp_1/state payload={"t": 25.426112299435292, "h": 46.168788155975406, "ts": 1764433081, "sensor_id": "lab2_temp_1"}
+2025-11-29 16:18:01,274 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/sensors/lab2_temp_2/state payload={"t": 25.134220771082287, "h": 46.42825843303041, "ts": 1764433081, "sensor_id": "lab2_temp_2"}
+2025-11-29 16:18:01,274 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/sensors/lab1_hum_1/state matched_callbacks=1
+2025-11-29 16:18:01,275 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/sensors/lab2_hum_1/state payload={"t": 25.369692871703464, "h": 46.66715355729444, "ts": 1764433081, "sensor_id": "lab2_hum_1"}
+2025-11-29 16:18:01,276 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/sensors/lab2_hum_2/state payload={"t": 25.346022065821796, "h": 46.6675910556784, "ts": 1764433081, "sensor_id": "lab2_hum_2"}
+2025-11-29 16:18:01,277 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/sensors/lab3_temp_1/state payload={"t": 27.547603753608925, "h": 47.975792867067334, "ts": 1764433081, "sensor_id": "lab3_temp_1"}
+2025-11-29 16:18:01,278 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/sensors/lab1_hum_2/state matched_callbacks=1
+2025-11-29 16:18:01,278 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/sensors/lab3_temp_2/state payload={"t": 27.458664646426033, "h": 48.15573270507029, "ts": 1764433081, "sensor_id": "lab3_temp_2"}
+2025-11-29 16:18:01,280 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/sensors/lab3_hum_1/state payload={"t": 27.6228062570697, "h": 48.42908629444149, "ts": 1764433081, "sensor_id": "lab3_hum_1"}
+2025-11-29 16:18:01,281 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/sensors/lab2_temp_1/state matched_callbacks=1
+2025-11-29 16:18:01,281 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/sensors/lab3_hum_2/state payload={"t": 27.527073011102946, "h": 48.00703551757925, "ts": 1764433081, "sensor_id": "lab3_hum_2"}
+2025-11-29 16:18:01,284 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/sensors/lab2_temp_2/state matched_callbacks=1
+2025-11-29 16:18:01,286 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/sensors/lab2_hum_1/state matched_callbacks=1
+2025-11-29 16:18:01,289 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/sensors/lab2_hum_2/state matched_callbacks=1
+2025-11-29 16:18:01,291 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/sensors/lab3_temp_1/state matched_callbacks=1
+2025-11-29 16:18:01,295 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/sensors/lab3_temp_2/state matched_callbacks=1
+2025-11-29 16:18:01,298 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/sensors/lab3_hum_1/state matched_callbacks=1
+2025-11-29 16:18:01,302 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/sensors/lab3_hum_2/state matched_callbacks=1
+2025-11-29 16:18:06,041 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/actuators/lab2_fan_1/cmd payload={"action": "OFF", "source": "rules", "ts": 1764433086}
+2025-11-29 16:18:06,044 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/actuators/lab2_fan_1/cmd matched_callbacks=1
+2025-11-29 16:18:06,045 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/actuators/lab2_heater_1/cmd payload={"action": "ON", "source": "rules", "ts": 1764433086}
+2025-11-29 16:18:06,046 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/actuators/lab2_fan_1/state payload={"state": "OFF", "ts": 1764433086, "actuator_id": "lab2_fan_1"}
+2025-11-29 16:18:06,048 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/actuators/lab2_heater_1/cmd matched_callbacks=1
+2025-11-29 16:18:06,049 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/actuators/lab2_heater_1/state payload={"state": "ON", "ts": 1764433086, "actuator_id": "lab2_heater_1"}
+2025-11-29 16:18:06,091 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/actuators/lab2_fan_1/state matched_callbacks=1
+2025-11-29 16:18:06,097 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/actuators/lab2_heater_1/state matched_callbacks=1
+2025-11-29 16:18:12,156 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/sensors/lab1_temp_1/state payload={"t": 26.665303117815363, "h": 43.055721836514536, "ts": 1764433092, "sensor_id": "lab1_temp_1"}
+2025-11-29 16:18:12,173 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/sensors/lab1_temp_2/state payload={"t": 26.802875923997554, "h": 43.170431663400045, "ts": 1764433092, "sensor_id": "lab1_temp_2"}
+2025-11-29 16:18:12,173 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/sensors/lab1_temp_1/state matched_callbacks=1
+2025-11-29 16:18:12,194 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/sensors/lab1_hum_1/state payload={"t": 26.886817493063162, "h": 42.91416062753837, "ts": 1764433092, "sensor_id": "lab1_hum_1"}
+2025-11-29 16:18:12,196 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/sensors/lab1_hum_2/state payload={"t": 26.992686580444783, "h": 42.94911444443026, "ts": 1764433092, "sensor_id": "lab1_hum_2"}
+2025-11-29 16:18:12,197 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/sensors/lab2_temp_1/state payload={"t": 26.014991962659927, "h": 45.723770792547434, "ts": 1764433092, "sensor_id": "lab2_temp_1"}
+2025-11-29 16:18:12,198 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/sensors/lab1_temp_2/state matched_callbacks=1
+2025-11-29 16:18:12,199 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/sensors/lab2_temp_2/state payload={"t": 25.900951869014296, "h": 45.92646086352632, "ts": 1764433092, "sensor_id": "lab2_temp_2"}
+2025-11-29 16:18:12,202 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/sensors/lab2_hum_1/state payload={"t": 25.84456519367934, "h": 45.562296580880414, "ts": 1764433092, "sensor_id": "lab2_hum_1"}
+2025-11-29 16:18:12,203 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/sensors/lab1_hum_1/state matched_callbacks=1
+2025-11-29 16:18:12,203 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/sensors/lab2_hum_2/state payload={"t": 26.030602669307967, "h": 45.95625631452556, "ts": 1764433092, "sensor_id": "lab2_hum_2"}
+2025-11-29 16:18:12,206 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/sensors/lab3_temp_1/state payload={"t": 26.983615817725237, "h": 47.291930577634716, "ts": 1764433092, "sensor_id": "lab3_temp_1"}
+2025-11-29 16:18:12,207 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/sensors/lab1_hum_2/state matched_callbacks=1
+2025-11-29 16:18:12,207 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/sensors/lab3_temp_2/state payload={"t": 27.236915656018805, "h": 47.225357449044466, "ts": 1764433092, "sensor_id": "lab3_temp_2"}
+2025-11-29 16:18:12,209 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/sensors/lab3_hum_1/state payload={"t": 27.26300534766842, "h": 47.045470926476945, "ts": 1764433092, "sensor_id": "lab3_hum_1"}
+2025-11-29 16:18:12,210 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/sensors/lab2_temp_1/state matched_callbacks=1
+2025-11-29 16:18:12,211 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/sensors/lab3_hum_2/state payload={"t": 27.180900898641088, "h": 47.07672690693572, "ts": 1764433092, "sensor_id": "lab3_hum_2"}
+2025-11-29 16:18:12,214 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/sensors/lab2_temp_2/state matched_callbacks=1
+2025-11-29 16:18:12,217 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/sensors/lab2_hum_1/state matched_callbacks=1
+2025-11-29 16:18:12,220 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/sensors/lab2_hum_2/state matched_callbacks=1
+2025-11-29 16:18:12,224 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/sensors/lab3_temp_1/state matched_callbacks=1
+2025-11-29 16:18:12,226 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/sensors/lab3_temp_2/state matched_callbacks=1
+2025-11-29 16:18:12,229 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/sensors/lab3_hum_1/state matched_callbacks=1
+2025-11-29 16:18:12,231 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/sensors/lab3_hum_2/state matched_callbacks=1
+2025-11-29 16:18:22,879 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/sensors/lab1_temp_1/state payload={"t": 26.719722547525752, "h": 42.131080236069245, "ts": 1764433102, "sensor_id": "lab1_temp_1"}
+2025-11-29 16:18:22,881 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/sensors/lab1_temp_2/state payload={"t": 26.554901493743788, "h": 42.29585558437236, "ts": 1764433102, "sensor_id": "lab1_temp_2"}
+2025-11-29 16:18:22,882 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/sensors/lab1_temp_1/state matched_callbacks=1
+2025-11-29 16:18:22,883 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/sensors/lab1_hum_1/state payload={"t": 26.54295914059422, "h": 42.45425807363449, "ts": 1764433102, "sensor_id": "lab1_hum_1"}
+2025-11-29 16:18:22,891 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/sensors/lab1_hum_2/state payload={"t": 26.72544174528581, "h": 42.47998727179057, "ts": 1764433102, "sensor_id": "lab1_hum_2"}
+2025-11-29 16:18:22,895 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/sensors/lab1_temp_2/state matched_callbacks=1
+2025-11-29 16:18:22,896 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/sensors/lab2_temp_1/state payload={"t": 26.46910185411041, "h": 46.1584019804343, "ts": 1764433102, "sensor_id": "lab2_temp_1"}
+2025-11-29 16:18:22,908 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/sensors/lab2_temp_2/state payload={"t": 26.351502103185762, "h": 46.23827880446268, "ts": 1764433102, "sensor_id": "lab2_temp_2"}
+2025-11-29 16:18:22,915 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/sensors/lab2_hum_1/state payload={"t": 26.64783364680092, "h": 45.56185277234192, "ts": 1764433102, "sensor_id": "lab2_hum_1"}
+2025-11-29 16:18:22,916 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/sensors/lab1_hum_1/state matched_callbacks=1
+2025-11-29 16:18:22,921 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/sensors/lab2_hum_2/state payload={"t": 26.463108900286805, "h": 46.02009761375756, "ts": 1764433102, "sensor_id": "lab2_hum_2"}
+2025-11-29 16:18:22,932 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/sensors/lab3_temp_1/state payload={"t": 26.99868941395101, "h": 46.61113346936237, "ts": 1764433102, "sensor_id": "lab3_temp_1"}
+2025-11-29 16:18:22,936 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/sensors/lab3_temp_2/state payload={"t": 26.731428169149755, "h": 46.545681668610385, "ts": 1764433102, "sensor_id": "lab3_temp_2"}
+2025-11-29 16:18:22,938 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/sensors/lab1_hum_2/state matched_callbacks=1
+2025-11-29 16:18:22,944 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/sensors/lab3_hum_1/state payload={"t": 26.93289256588451, "h": 46.34567107001745, "ts": 1764433102, "sensor_id": "lab3_hum_1"}
+2025-11-29 16:18:22,951 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/sensors/lab3_hum_2/state payload={"t": 26.973216230258757, "h": 46.18543125416071, "ts": 1764433102, "sensor_id": "lab3_hum_2"}
+2025-11-29 16:18:22,953 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/sensors/lab2_temp_1/state matched_callbacks=1
+2025-11-29 16:18:22,958 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/sensors/lab2_temp_2/state matched_callbacks=1
+2025-11-29 16:18:22,960 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/sensors/lab2_hum_1/state matched_callbacks=1
+2025-11-29 16:18:22,972 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/sensors/lab2_hum_2/state matched_callbacks=1
+2025-11-29 16:18:22,978 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/sensors/lab3_temp_1/state matched_callbacks=1
+2025-11-29 16:18:22,985 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/sensors/lab3_temp_2/state matched_callbacks=1
+2025-11-29 16:18:22,992 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/sensors/lab3_hum_1/state matched_callbacks=1
+2025-11-29 16:18:22,999 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/sensors/lab3_hum_2/state matched_callbacks=1
+2025-11-29 16:18:33,262 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/sensors/lab1_temp_1/state payload={"t": 26.50685786723023, "h": 41.77666407569958, "ts": 1764433113, "sensor_id": "lab1_temp_1"}
+2025-11-29 16:18:33,270 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/sensors/lab1_temp_2/state payload={"t": 26.43456465687032, "h": 41.53450298717233, "ts": 1764433113, "sensor_id": "lab1_temp_2"}
+2025-11-29 16:18:33,273 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/sensors/lab1_temp_1/state matched_callbacks=1
+2025-11-29 16:18:33,280 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/sensors/lab1_hum_1/state payload={"t": 26.37233810611364, "h": 41.86354746910961, "ts": 1764433113, "sensor_id": "lab1_hum_1"}
+2025-11-29 16:18:33,300 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/sensors/lab1_hum_2/state payload={"t": 26.095181666329353, "h": 41.31535813103049, "ts": 1764433113, "sensor_id": "lab1_hum_2"}
+2025-11-29 16:18:33,308 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/sensors/lab1_temp_2/state matched_callbacks=1
+2025-11-29 16:18:33,312 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/sensors/lab2_temp_1/state payload={"t": 27.273725316552547, "h": 46.05324564719726, "ts": 1764433113, "sensor_id": "lab2_temp_1"}
+2025-11-29 16:18:33,330 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/sensors/lab2_temp_2/state payload={"t": 27.326540043454163, "h": 46.37799083641434, "ts": 1764433113, "sensor_id": "lab2_temp_2"}
+2025-11-29 16:18:33,339 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/sensors/lab2_hum_1/state payload={"t": 26.898381290066144, "h": 45.87849980653497, "ts": 1764433113, "sensor_id": "lab2_hum_1"}
+2025-11-29 16:18:33,341 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/sensors/lab1_hum_1/state matched_callbacks=1
+2025-11-29 16:18:33,347 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/sensors/lab2_hum_2/state payload={"t": 26.959952285174218, "h": 46.0676443788515, "ts": 1764433113, "sensor_id": "lab2_hum_2"}
+2025-11-29 16:18:33,358 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/sensors/lab3_temp_1/state payload={"t": 26.569775140217608, "h": 46.016169101880855, "ts": 1764433113, "sensor_id": "lab3_temp_1"}
+2025-11-29 16:18:33,362 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/sensors/lab3_temp_2/state payload={"t": 26.094717078727168, "h": 45.78802972194672, "ts": 1764433113, "sensor_id": "lab3_temp_2"}
+2025-11-29 16:18:33,362 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/sensors/lab1_hum_2/state matched_callbacks=1
+2025-11-29 16:18:33,365 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/sensors/lab3_hum_1/state payload={"t": 26.27681736284219, "h": 45.841617020592345, "ts": 1764433113, "sensor_id": "lab3_hum_1"}
+2025-11-29 16:18:33,378 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/sensors/lab3_hum_2/state payload={"t": 26.24886666153187, "h": 46.07562250200992, "ts": 1764433113, "sensor_id": "lab3_hum_2"}
+2025-11-29 16:18:33,382 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/sensors/lab2_temp_1/state matched_callbacks=1
+2025-11-29 16:18:33,390 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/sensors/lab2_temp_2/state matched_callbacks=1
+2025-11-29 16:18:33,395 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/sensors/lab2_hum_1/state matched_callbacks=1
+2025-11-29 16:18:33,402 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/sensors/lab2_hum_2/state matched_callbacks=1
+2025-11-29 16:18:33,412 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/sensors/lab3_temp_1/state matched_callbacks=1
+2025-11-29 16:18:33,427 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/sensors/lab3_temp_2/state matched_callbacks=1
+2025-11-29 16:18:33,442 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/sensors/lab3_hum_1/state matched_callbacks=1
+2025-11-29 16:18:33,453 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/sensors/lab3_hum_2/state matched_callbacks=1
+2025-11-29 16:18:35,563 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/actuators/lab3_fan_1/cmd payload={"action": "OFF", "source": "rules", "ts": 1764433115}
+2025-11-29 16:18:35,573 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/actuators/lab3_fan_1/cmd matched_callbacks=1
+2025-11-29 16:18:35,584 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/actuators/lab3_fan_1/state payload={"state": "OFF", "ts": 1764433115, "actuator_id": "lab3_fan_1"}
+2025-11-29 16:18:35,583 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/actuators/lab3_heater_1/cmd payload={"action": "ON", "source": "rules", "ts": 1764433115}
+2025-11-29 16:18:35,601 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/actuators/lab3_fan_1/state matched_callbacks=1
+2025-11-29 16:18:35,602 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/actuators/lab3_heater_1/cmd matched_callbacks=1
+2025-11-29 16:18:35,620 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/actuators/lab3_heater_1/state payload={"state": "ON", "ts": 1764433115, "actuator_id": "lab3_heater_1"}
+2025-11-29 16:18:35,664 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/actuators/lab3_heater_1/state matched_callbacks=1
+2025-11-29 16:18:43,349 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/sensors/lab1_temp_1/state payload={"t": 26.258409385704635, "h": 40.67006557411867, "ts": 1764433123, "sensor_id": "lab1_temp_1"}
+2025-11-29 16:18:43,350 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/sensors/lab1_temp_2/state payload={"t": 25.752169730644784, "h": 41.003587099790494, "ts": 1764433123, "sensor_id": "lab1_temp_2"}
+2025-11-29 16:18:43,351 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/sensors/lab1_temp_1/state matched_callbacks=1
+2025-11-29 16:18:43,352 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/sensors/lab1_hum_1/state payload={"t": 26.015728912663878, "h": 40.37476674436821, "ts": 1764433123, "sensor_id": "lab1_hum_1"}
+2025-11-29 16:18:43,357 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/sensors/lab1_hum_2/state payload={"t": 26.125815787480335, "h": 40.60508355194638, "ts": 1764433123, "sensor_id": "lab1_hum_2"}
+2025-11-29 16:18:43,358 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/sensors/lab1_temp_2/state matched_callbacks=1
+2025-11-29 16:18:43,358 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/sensors/lab2_temp_1/state payload={"t": 27.820177386873763, "h": 46.67737370710542, "ts": 1764433123, "sensor_id": "lab2_temp_1"}
+2025-11-29 16:18:43,361 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/sensors/lab2_temp_2/state payload={"t": 27.971861679604206, "h": 46.621783818709275, "ts": 1764433123, "sensor_id": "lab2_temp_2"}
+2025-11-29 16:18:43,362 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/sensors/lab1_hum_1/state matched_callbacks=1
+2025-11-29 16:18:43,363 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/sensors/lab2_hum_1/state payload={"t": 27.600853816284573, "h": 46.51834720191406, "ts": 1764433123, "sensor_id": "lab2_hum_1"}
+2025-11-29 16:18:43,365 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab2/sensors/lab2_hum_2/state payload={"t": 27.694672703670285, "h": 46.1946575108871, "ts": 1764433123, "sensor_id": "lab2_hum_2"}
+2025-11-29 16:18:43,366 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/sensors/lab1_hum_2/state matched_callbacks=1
+2025-11-29 16:18:43,366 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/sensors/lab3_temp_1/state payload={"t": 26.92626308099718, "h": 45.3893839202807, "ts": 1764433123, "sensor_id": "lab3_temp_1"}
+2025-11-29 16:18:43,368 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/sensors/lab3_temp_2/state payload={"t": 26.779848428521312, "h": 45.611554634847344, "ts": 1764433123, "sensor_id": "lab3_temp_2"}
+2025-11-29 16:18:43,369 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/sensors/lab3_hum_1/state payload={"t": 26.890067212699474, "h": 45.86583992613949, "ts": 1764433123, "sensor_id": "lab3_hum_1"}
+2025-11-29 16:18:43,369 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/sensors/lab2_temp_1/state matched_callbacks=1
+2025-11-29 16:18:43,371 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab3/sensors/lab3_hum_2/state payload={"t": 26.942446153078897, "h": 45.90532211660959, "ts": 1764433123, "sensor_id": "lab3_hum_2"}
+2025-11-29 16:18:43,374 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/sensors/lab2_temp_2/state matched_callbacks=1
+2025-11-29 16:18:43,378 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/sensors/lab2_hum_1/state matched_callbacks=1
+2025-11-29 16:18:43,382 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab2/sensors/lab2_hum_2/state matched_callbacks=1
+2025-11-29 16:18:43,386 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/sensors/lab3_temp_1/state matched_callbacks=1
+2025-11-29 16:18:43,390 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/sensors/lab3_temp_2/state matched_callbacks=1
+2025-11-29 16:18:43,394 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/sensors/lab3_hum_1/state matched_callbacks=1
+2025-11-29 16:18:43,397 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab3/sensors/lab3_hum_2/state matched_callbacks=1
+2025-11-29 16:18:45,633 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/actuators/lab1_fan_1/cmd payload={"action": "OFF", "source": "rules", "ts": 1764433125}
+2025-11-29 16:18:45,651 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/actuators/lab1_fan_1/cmd matched_callbacks=1
+2025-11-29 16:18:45,652 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/actuators/lab1_fan_1/state payload={"state": "OFF", "ts": 1764433125, "actuator_id": "lab1_fan_1"}
+2025-11-29 16:18:45,652 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/actuators/lab1_heater_1/cmd payload={"action": "ON", "source": "rules", "ts": 1764433125}
+2025-11-29 16:18:45,718 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/actuators/lab1_fan_1/state matched_callbacks=1
+2025-11-29 16:18:45,819 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/actuators/lab1_heater_1/cmd matched_callbacks=1
+2025-11-29 16:18:45,820 INFO Device_connectors.mqtt_client [mqtt_client.py:110]: Publishing to labs/lab1/actuators/lab1_heater_1/state payload={"state": "ON", "ts": 1764433125, "actuator_id": "lab1_heater_1"}
+2025-11-29 16:18:45,823 DEBUG Device_connectors.mqtt_client [mqtt_client.py:78]: MQTT message topic=labs/lab1/actuators/lab1_heater_1/state matched_callbacks=1

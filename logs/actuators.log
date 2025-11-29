@@ -1523,3 +1523,19 @@
 2025-11-26 16:38:49,357 INFO Device_connectors.actuator_bridge [actuator_bridge.py:31]: Command -> topic=labs/lab1/actuators/lab1_heater_1/cmd payload={'action': 'OFF', 'source': 'rules', 'ts': 1764175129}
 2025-11-26 16:39:06,989 INFO Device_connectors.actuator_bridge [actuator_bridge.py:31]: Command -> topic=labs/lab2/actuators/lab2_fan_1/cmd payload={'action': 'ON', 'source': 'rules', 'ts': 1764175146}
 2025-11-26 16:39:06,995 INFO Device_connectors.actuator_bridge [actuator_bridge.py:31]: Command -> topic=labs/lab2/actuators/lab2_dehumidifier_1/cmd payload={'action': 'ON', 'source': 'rules', 'ts': 1764175146}
+2025-11-29 16:15:43,097 INFO Device_connectors.actuator_bridge [actuator_bridge.py:37]: Actuator bridge listening on labs/+/actuators/+/state
+2025-11-29 16:15:53,106 INFO Device_connectors.actuator_bridge [actuator_bridge.py:31]: Command -> topic=labs/lab3/actuators/lab3_fan_1/cmd payload={'action': 'OFF', 'source': 'rules', 'ts': 1764432953}
+2025-11-29 16:15:53,116 INFO Device_connectors.actuator_bridge [actuator_bridge.py:31]: Command -> topic=labs/lab3/actuators/lab3_heater_1/cmd payload={'action': 'ON', 'source': 'rules', 'ts': 1764432953}
+2025-11-29 16:16:02,620 INFO Device_connectors.actuator_bridge [actuator_bridge.py:31]: Command -> topic=labs/lab1/actuators/lab1_fan_1/cmd payload={'action': 'OFF', 'source': 'rules', 'ts': 1764432962}
+2025-11-29 16:16:02,638 INFO Device_connectors.actuator_bridge [actuator_bridge.py:31]: Command -> topic=labs/lab1/actuators/lab1_heater_1/cmd payload={'action': 'ON', 'source': 'rules', 'ts': 1764432962}
+2025-11-29 16:16:42,567 INFO Device_connectors.actuator_bridge [actuator_bridge.py:31]: Command -> topic=labs/lab1/actuators/lab1_fan_1/cmd payload={'action': 'ON', 'source': 'rules', 'ts': 1764433002}
+2025-11-29 16:16:42,572 INFO Device_connectors.actuator_bridge [actuator_bridge.py:31]: Command -> topic=labs/lab2/actuators/lab2_heater_1/cmd payload={'action': 'OFF', 'source': 'rules', 'ts': 1764433002}
+2025-11-29 16:16:52,592 INFO Device_connectors.actuator_bridge [actuator_bridge.py:31]: Command -> topic=labs/lab1/actuators/lab1_heater_1/cmd payload={'action': 'OFF', 'source': 'rules', 'ts': 1764433012}
+2025-11-29 16:16:57,575 INFO Device_connectors.actuator_bridge [actuator_bridge.py:31]: Command -> topic=labs/lab3/actuators/lab3_fan_1/cmd payload={'action': 'ON', 'source': 'rules', 'ts': 1764433017}
+2025-11-29 16:17:07,134 INFO Device_connectors.actuator_bridge [actuator_bridge.py:31]: Command -> topic=labs/lab3/actuators/lab3_heater_1/cmd payload={'action': 'OFF', 'source': 'rules', 'ts': 1764433027}
+2025-11-29 16:18:06,039 INFO Device_connectors.actuator_bridge [actuator_bridge.py:31]: Command -> topic=labs/lab2/actuators/lab2_fan_1/cmd payload={'action': 'OFF', 'source': 'rules', 'ts': 1764433086}
+2025-11-29 16:18:06,042 INFO Device_connectors.actuator_bridge [actuator_bridge.py:31]: Command -> topic=labs/lab2/actuators/lab2_heater_1/cmd payload={'action': 'ON', 'source': 'rules', 'ts': 1764433086}
+2025-11-29 16:18:35,549 INFO Device_connectors.actuator_bridge [actuator_bridge.py:31]: Command -> topic=labs/lab3/actuators/lab3_fan_1/cmd payload={'action': 'OFF', 'source': 'rules', 'ts': 1764433115}
+2025-11-29 16:18:35,571 INFO Device_connectors.actuator_bridge [actuator_bridge.py:31]: Command -> topic=labs/lab3/actuators/lab3_heater_1/cmd payload={'action': 'ON', 'source': 'rules', 'ts': 1764433115}
+2025-11-29 16:18:45,546 INFO Device_connectors.actuator_bridge [actuator_bridge.py:31]: Command -> topic=labs/lab1/actuators/lab1_fan_1/cmd payload={'action': 'OFF', 'source': 'rules', 'ts': 1764433125}
+2025-11-29 16:18:45,651 INFO Device_connectors.actuator_bridge [actuator_bridge.py:31]: Command -> topic=labs/lab1/actuators/lab1_heater_1/cmd payload={'action': 'ON', 'source': 'rules', 'ts': 1764433125}
