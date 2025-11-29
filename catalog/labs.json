@@ -1,0 +1,10 @@
+{
+  "project_owner": "IoT TempHum Team",
+  "project_name": "TempHum-Labs",
+  "last_update": "2025-10-11 00:00:00",
+  "labs": [
+    { "lab_id": "lab1", "name": "Chemistry Lab", "notes": "First floor, east wing" },
+    { "lab_id": "lab2", "name": "Biology Lab", "notes": "Ground floor, sterilized zone" },
+    { "lab_id": "lab3", "name": "Materials Lab", "notes": "Basement, ventilation required" }
+  ]
+}
