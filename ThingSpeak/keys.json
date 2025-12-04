@@ -37,12 +37,12 @@
         },
         "field2": {
           "sensor_id": "lab2_temp_2",
-          "metric": "h",
+          "metric": "t",
           "api_key": ""
         },
         "field3": {
           "sensor_id": "lab2_hum_1",
-          "metric": "t",
+          "metric": "h",
           "api_key": ""
         },
         "field4": {
@@ -63,12 +63,12 @@
         },
         "field2": {
           "sensor_id": "lab3_temp_2",
-          "metric": "h",
+          "metric": "t",
           "api_key": ""
         },
         "field3": {
           "sensor_id": "lab3_hum_1",
-          "metric": "t",
+          "metric": "h",
           "api_key": ""
         },
         "field4": {

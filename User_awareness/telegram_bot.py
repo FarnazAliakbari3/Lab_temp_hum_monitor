@@ -13,6 +13,8 @@ import shlex
 import requests
 import telepot
 from telepot.loop import MessageLoop
+from telepot.namedtuple import InlineKeyboardMarkup, InlineKeyboardButton
+from datetime import datetime
 
 REGISTRY_API = os.getenv("REGISTRY_API_URL", "http://localhost:8080")
 TOKEN = os.getenv("TELEGRAM_BOT_TOKEN", "")
@@ -21,6 +23,27 @@ ALERT_COOLDOWN_SEC = int(os.getenv("ALERT_COOLDOWN_SEC", "300"))
 
 KNOWN_CHATS = set()
 _last_alert = {}
+
+
+def fmt_val(v):
+    if isinstance(v, (int, float)):
+        return f"{v:.2f}"
+    return v if v is not None else "?"
+
+
+def fmt_ts(ts):
+    try:
+        ts_int = int(ts)
+        dt = datetime.fromtimestamp(ts_int)
+        age = int(time.time()) - ts_int
+        age_txt = f"{age}s ago" if age < 120 else f"{age//60}m ago"
+        return f"{dt.strftime('%Y-%m-%d %H:%M:%S')} ({age_txt})"
+    except Exception:
+        return ts if ts is not None else "never"
+
+
+def get_labs():
+    return _get("labs").get("labs", [])
 
 
 def _get(endpoint):
@@ -49,20 +72,24 @@ def fmt_status(data):
         return "No labs registered."
     lines = []
     for lab in labs:
-        lines.append(f"{lab.get('lab_id')} ({lab.get('name','')})")
+        lines.append(f"🏷 {lab.get('lab_id')} ({lab.get('name','')})")
         thr = lab.get("thresholds", {})
         lines.append(
-            f"  Thr temp {thr.get('t_low','?')}..{thr.get('t_high','?')} hum {thr.get('h_low','?')}..{thr.get('h_high','?')}"
+            f"  🎯 Temp {thr.get('t_low','?')}..{thr.get('t_high','?')}  Hum {thr.get('h_low','?')}..{thr.get('h_high','?')}"
         )
-        lines.append(f"  Last sensor: {lab.get('last_sensor_seen','never')}")
+        lines.append(f"  ⏱ Last sensor: {fmt_ts(lab.get('last_sensor_seen','never'))}")
         if lab.get("alerts", {}).get("sensor_offline"):
-            lines.append("  ALERT: sensor offline")
+            lines.append("  ⚠️ Sensor offline")
         for s in lab.get("sensors", []):
             rd = s.get("reading") or {}
-            lines.append(f"   - {s.get('sensor_id')} t={rd.get('t','?')} h={rd.get('h','?')} ts={rd.get('ts','?')}")
+            lines.append(
+                f"   🌡️ {s.get('sensor_id')}: T={fmt_val(rd.get('t'))}°C  H={fmt_val(rd.get('h'))}%  ts={fmt_ts(rd.get('ts','?'))}"
+            )
         for a in lab.get("actuators", []):
             st = a.get("state") or {}
-            lines.append(f"   - {a.get('actuator_id')} {a.get('type','')} state={st.get('state','?')} ts={st.get('ts','?')}")
+            lines.append(
+                f"   ⚙️ {a.get('actuator_id')} ({a.get('type','')}): {st.get('state','?')}  ts={fmt_ts(st.get('ts','?'))}"
+            )
         lines.append("")
     return "\n".join(lines).strip()
 
@@ -93,23 +120,23 @@ def poll_alerts(bot):
                 h = rd.get("h")
                 if t is not None:
                     if t > thr.get("t_high", 999) and should_alert(lab_id, "t_high"):
-                        msg = f"ALERT {lab_id}: temp {t} > {thr.get('t_high')} (sensor {sid})"
+                        msg = f"⚠️ {lab_id}: temp {fmt_val(t)} > {fmt_val(thr.get('t_high'))} ({sid})"
                         for chat in KNOWN_CHATS:
                             bot.sendMessage(chat, msg)
                         track_alert(lab_id, "t_high")
                     if t < thr.get("t_low", -999) and should_alert(lab_id, "t_low"):
-                        msg = f"ALERT {lab_id}: temp {t} < {thr.get('t_low')} (sensor {sid})"
+                        msg = f"⚠️ {lab_id}: temp {fmt_val(t)} < {fmt_val(thr.get('t_low'))} ({sid})"
                         for chat in KNOWN_CHATS:
                             bot.sendMessage(chat, msg)
                         track_alert(lab_id, "t_low")
                 if h is not None:
                     if h > thr.get("h_high", 999) and should_alert(lab_id, "h_high"):
-                        msg = f"ALERT {lab_id}: humidity {h} > {thr.get('h_high')} (sensor {sid})"
+                        msg = f"⚠️ {lab_id}: humidity {fmt_val(h)} > {fmt_val(thr.get('h_high'))} ({sid})"
                         for chat in KNOWN_CHATS:
                             bot.sendMessage(chat, msg)
                         track_alert(lab_id, "h_high")
                     if h < thr.get("h_low", -999) and should_alert(lab_id, "h_low"):
-                        msg = f"ALERT {lab_id}: humidity {h} < {thr.get('h_low')} (sensor {sid})"
+                        msg = f"⚠️ {lab_id}: humidity {fmt_val(h)} < {fmt_val(thr.get('h_low'))} ({sid})"
                         for chat in KNOWN_CHATS:
                             bot.sendMessage(chat, msg)
                         track_alert(lab_id, "h_low")
@@ -117,141 +144,283 @@ def poll_alerts(bot):
 
 
 def handle(msg):
-    content_type, chat_type, chat_id = telepot.glance(msg)
-    if content_type != "text":
-        return
-    text = msg["text"].strip()
-    parts = shlex.split(text)
-    if not parts:
-        return
-    cmd = parts[0].lower()
-
-    if cmd in ("/start", "/help"):
-        KNOWN_CHATS.add(chat_id)
-        bot.sendMessage(
-            chat_id,
-            "Commands:\n"
-            "/status\n"
-            "/list_labs\n"
-            "/turn_on <lab> <actuator>\n"
-            "/turn_off <lab> <actuator>\n"
-            "/turn_on_all <lab>\n"
-            "/turn_off_all <lab>\n"
-            "/add_lab <lab> \"name\" [notes]\n"
-            "/remove_lab <lab>\n"
-            "/add_sensor <lab> <sensor_id> <type>\n"
-            "/remove_sensor <sensor_id>\n"
-            "/add_actuator <lab> <actuator_id> <type>\n"
-            "/remove_actuator <actuator_id>\n",
-        )
-        return
-
-    if cmd == "/status":
-        data = _get("status")
-        bot.sendMessage(chat_id, fmt_status(data))
-        return
-
-    if cmd == "/list_labs":
-        labs = _get("labs").get("labs", [])
-        if not labs:
-            bot.sendMessage(chat_id, "No labs.")
-        else:
-            bot.sendMessage(chat_id, "\n".join(f"- {l['lab_id']} ({l.get('name','')})" for l in labs))
-        return
-
-    if cmd in ("/turn_on", "/turn_off"):
-        if len(parts) != 3:
-            bot.sendMessage(chat_id, f"Usage: {cmd} <lab> <actuator>")
+    glance = telepot.glance(msg, flavor="chat")
+    if glance and glance[0] == "text":
+        _, _, chat_id = glance
+        text = msg["text"].strip()
+        parts = shlex.split(text)
+        if not parts:
             return
-        action = "ON" if cmd == "/turn_on" else "OFF"
-        payload = {"lab_id": parts[1], "actuator_id": parts[2], "action": action, "source": "bot"}
+        cmd = parts[0].lower()
+
+        if cmd in ("/start", "/help"):
+            KNOWN_CHATS.add(chat_id)
+            send_menu(chat_id)
+            return
+
+        if cmd == "/menu":
+            KNOWN_CHATS.add(chat_id)
+            send_menu(chat_id)
+            return
+
+        if cmd == "/status":
+            data = _get("status")
+            bot.sendMessage(chat_id, fmt_status(data))
+            return
+
+        if cmd == "/list_labs":
+            send_labs_list(chat_id)
+            return
+
+        if cmd in ("/turn_on", "/turn_off"):
+            action = "ON" if cmd == "/turn_on" else "OFF"
+            send_lab_picker(chat_id, action, all_actuators=False)
+            return
+
+        if cmd in ("/turn_on_all", "/turn_off_all"):
+            action = "ON" if cmd == "/turn_on_all" else "OFF"
+            send_lab_picker(chat_id, action, all_actuators=True)
+            return
+
+        if cmd == "/add_lab":
+            if len(parts) < 3:
+                bot.sendMessage(chat_id, "Usage: /add_lab <lab_id> \"<name>\" [notes]")
+                return
+            lab_id, name = parts[1], parts[2]
+            notes = " ".join(parts[3:]) if len(parts) > 3 else ""
+            res = _post("labs", {"lab_id": lab_id, "name": name, "notes": notes})
+            bot.sendMessage(chat_id, "OK" if res.get("ok") else f"Error: {res.get('error','unknown')}")
+            return
+
+        if cmd == "/remove_lab":
+            if len(parts) != 2:
+                bot.sendMessage(chat_id, "Usage: /remove_lab <lab_id>")
+                return
+            try:
+                r = requests.delete(f"{REGISTRY_API.rstrip('/')}/lab/{parts[1]}", timeout=5)
+                res = r.json()
+            except Exception:
+                res = {"error": "registry unreachable"}
+            bot.sendMessage(chat_id, "OK" if res.get("ok") else f"Error: {res.get('error','unknown')}")
+            return
+
+        if cmd == "/add_sensor":
+            if len(parts) != 4:
+                bot.sendMessage(chat_id, "Usage: /add_sensor <lab_id> <sensor_id> <type>")
+                return
+            res = _post("sensors", {"lab_id": parts[1], "sensor_id": parts[2], "type": parts[3]})
+            bot.sendMessage(chat_id, "OK" if res.get("ok") else f"Error: {res.get('error','unknown')}")
+            return
+
+        if cmd == "/remove_sensor":
+            if len(parts) != 2:
+                bot.sendMessage(chat_id, "Usage: /remove_sensor <sensor_id>")
+                return
+            try:
+                r = requests.delete(f"{REGISTRY_API.rstrip('/')}/sensor/{parts[1]}", timeout=5)
+                res = r.json()
+            except Exception:
+                res = {"error": "registry unreachable"}
+            bot.sendMessage(chat_id, "OK" if res.get("ok") else f"Error: {res.get('error','unknown')}")
+            return
+
+        if cmd == "/add_actuator":
+            if len(parts) != 4:
+                bot.sendMessage(chat_id, "Usage: /add_actuator <lab_id> <actuator_id> <type>")
+                return
+            res = _post("actuators", {"lab_id": parts[1], "actuator_id": parts[2], "type": parts[3]})
+            bot.sendMessage(chat_id, "OK" if res.get("ok") else f"Error: {res.get('error','unknown')}")
+            return
+
+        if cmd == "/remove_actuator":
+            if len(parts) != 2:
+                bot.sendMessage(chat_id, "Usage: /remove_actuator <actuator_id>")
+                return
+            try:
+                r = requests.delete(f"{REGISTRY_API.rstrip('/')}/actuator/{parts[1]}", timeout=5)
+                res = r.json()
+            except Exception:
+                res = {"error": "registry unreachable"}
+            bot.sendMessage(chat_id, "OK" if res.get("ok") else f"Error: {res.get('error','unknown')}")
+            return
+
+        bot.sendMessage(chat_id, "Unknown command. Use /help")
+    else:
+        # handle inline button presses
+        flavor = telepot.flavor(msg)
+        if flavor == "callback_query":
+            query_id, from_id, data = telepot.glance(msg, flavor="callback_query")
+            if data == "status":
+                KNOWN_CHATS.add(from_id)
+                bot.sendMessage(from_id, fmt_status(_get("status")))
+            elif data == "list_labs":
+                send_labs_list(from_id)
+            elif data.startswith("lab:"):
+                lab_id = data.split(":", 1)[1]
+                send_lab_controls(from_id, lab_id)
+            elif data.startswith("cmd:"):
+                _, lab_id, actuator_id, action = data.split(":", 3)
+                payload = {"lab_id": lab_id, "actuator_id": actuator_id, "action": action, "source": "bot"}
+                res = _post("command", payload)
+                bot.sendMessage(from_id, "OK" if res.get("ok") else f"Error: {res.get('error','unknown')}")
+            elif data.startswith("pick:"):
+                _, action, lab_id, mode = data.split(":", 3)
+                if not lab_id:
+                    send_lab_picker(from_id, action, all_actuators=(mode == "all"))
+                elif mode == "all":
+                    do_all(from_id, lab_id, action)
+                else:
+                    send_actuator_picker(from_id, lab_id, action)
+            elif data.startswith("tpl:"):
+                _, kind = data.split(":", 1)
+                send_template(from_id, kind)
+            elif data.startswith("onall:"):
+                lab_id = data.split(":", 1)[1]
+                do_all(from_id, lab_id, "ON")
+            elif data.startswith("offall:"):
+                lab_id = data.split(":", 1)[1]
+                do_all(from_id, lab_id, "OFF")
+            bot.answerCallbackQuery(query_id)
+
+
+def do_all(chat_id, lab_id, action):
+    status = _get("status")
+    labs = [l for l in status.get("labs", []) if l.get("lab_id") == lab_id]
+    if not labs:
+        bot.sendMessage(chat_id, "Lab not found.")
+        return
+    errors = []
+    for act in labs[0].get("actuators", []):
+        payload = {"lab_id": lab_id, "actuator_id": act.get("actuator_id"), "action": action, "source": "bot"}
         res = _post("command", payload)
-        bot.sendMessage(chat_id, "OK" if res.get("ok") else f"Error: {res.get('error','unknown')}")
-        return
+        if not res.get("ok"):
+            errors.append(f"{act.get('actuator_id')}: {res.get('error','unknown')}")
+    bot.sendMessage(chat_id, "Done." if not errors else "\n".join(errors))
 
-    if cmd in ("/turn_on_all", "/turn_off_all"):
-        if len(parts) != 2:
-            bot.sendMessage(chat_id, f"Usage: {cmd} <lab>")
-            return
-        lab_id = parts[1]
-        action = "ON" if cmd == "/turn_on_all" else "OFF"
-        status = _get("status")
-        labs = [l for l in status.get("labs", []) if l.get("lab_id") == lab_id]
-        if not labs:
-            bot.sendMessage(chat_id, "Lab not found.")
-            return
-        errors = []
-        for act in labs[0].get("actuators", []):
-            payload = {"lab_id": lab_id, "actuator_id": act.get("actuator_id"), "action": action, "source": "bot"}
-            res = _post("command", payload)
-            if not res.get("ok"):
-                errors.append(f"{act.get('actuator_id')}: {res.get('error','unknown')}")
-        bot.sendMessage(chat_id, "Done." if not errors else "\n".join(errors))
-        return
 
-    if cmd == "/add_lab":
-        if len(parts) < 3:
-            bot.sendMessage(chat_id, "Usage: /add_lab <lab_id> \"<name>\" [notes]")
-            return
-        lab_id, name = parts[1], parts[2]
-        notes = " ".join(parts[3:]) if len(parts) > 3 else ""
-        res = _post("labs", {"lab_id": lab_id, "name": name, "notes": notes})
-        bot.sendMessage(chat_id, "OK" if res.get("ok") else f"Error: {res.get('error','unknown')}")
-        return
+def send_menu(chat_id):
+    KNOWN_CHATS.add(chat_id)
+    labs = get_labs()
+    lab_rows = [[InlineKeyboardButton(text=f"🎛 {lab['lab_id']}", callback_data=f"lab:{lab['lab_id']}")] for lab in labs]
+    action_rows = [
+        [
+            InlineKeyboardButton(text="📊 Status", callback_data="status"),
+            InlineKeyboardButton(text="🏷 Labs", callback_data="list_labs"),
+        ],
+        [
+            InlineKeyboardButton(text="⚡ Turn ON", callback_data="pick:ON::one"),
+            InlineKeyboardButton(text="⏻ Turn OFF", callback_data="pick:OFF::one"),
+        ],
+        [
+            InlineKeyboardButton(text="⚡ ON ALL", callback_data="pick:ON::all"),
+            InlineKeyboardButton(text="⏻ OFF ALL", callback_data="pick:OFF::all"),
+        ],
+        [
+            InlineKeyboardButton(text="➕ Add Lab", callback_data="tpl:add_lab"),
+            InlineKeyboardButton(text="➖ Remove Lab", callback_data="tpl:remove_lab"),
+        ],
+        [
+            InlineKeyboardButton(text="➕ Add Sensor", callback_data="tpl:add_sensor"),
+            InlineKeyboardButton(text="➖ Remove Sensor", callback_data="tpl:remove_sensor"),
+        ],
+        [
+            InlineKeyboardButton(text="➕ Add Actuator", callback_data="tpl:add_actuator"),
+            InlineKeyboardButton(text="➖ Remove Actuator", callback_data="tpl:remove_actuator"),
+        ],
+    ]
+    keyboard = InlineKeyboardMarkup(inline_keyboard=action_rows + lab_rows)
+    help_text = (
+        "🤖 Temp/Humidity Bot\n"
+        "Use buttons or commands:\n"
+        "• /status – full status\n"
+        "• /list_labs – list labs\n"
+        "• /turn_on <lab_id> <actuator_id>\n"
+        "• /turn_off <lab_id> <actuator_id>\n"
+        "• /turn_on_all <lab_id>\n"
+        "• /turn_off_all <lab_id>\n"
+        "• /add_lab <lab_id> \"name\" [notes]\n"
+        "• /remove_lab <lab_id>\n"
+        "• /add_sensor <lab_id> <sensor_id> <type>\n"
+        "• /remove_sensor <sensor_id>\n"
+        "• /add_actuator <lab_id> <actuator_id> <type>\n"
+        "• /remove_actuator <actuator_id>\n"
+        "Examples: lab_id=lab1, actuator_id=lab1_fan_1, sensor_id=lab1_temp_1\n"
+    )
+    bot.sendMessage(chat_id, help_text, reply_markup=keyboard)
 
-    if cmd == "/remove_lab":
-        if len(parts) != 2:
-            bot.sendMessage(chat_id, "Usage: /remove_lab <lab_id>")
-            return
-        try:
-            r = requests.delete(f"{REGISTRY_API.rstrip('/')}/lab/{parts[1]}", timeout=5)
-            res = r.json()
-        except Exception:
-            res = {"error": "registry unreachable"}
-        bot.sendMessage(chat_id, "OK" if res.get("ok") else f"Error: {res.get('error','unknown')}")
-        return
 
-    if cmd == "/add_sensor":
-        if len(parts) != 4:
-            bot.sendMessage(chat_id, "Usage: /add_sensor <lab_id> <sensor_id> <type>")
-            return
-        res = _post("sensors", {"lab_id": parts[1], "sensor_id": parts[2], "type": parts[3]})
-        bot.sendMessage(chat_id, "OK" if res.get("ok") else f"Error: {res.get('error','unknown')}")
+def send_lab_controls(chat_id, lab_id):
+    status = _get("status")
+    labs = [l for l in status.get("labs", []) if l.get("lab_id") == lab_id]
+    if not labs:
+        bot.sendMessage(chat_id, "Lab not found.")
         return
+    lab = labs[0]
+    rows = []
+    for act in lab.get("actuators", []):
+        aid = act.get("actuator_id")
+        rows.append(
+            [
+                InlineKeyboardButton(text=f"⚡ ON {aid}", callback_data=f"cmd:{lab_id}:{aid}:ON"),
+                InlineKeyboardButton(text=f"⏻ OFF {aid}", callback_data=f"cmd:{lab_id}:{aid}:OFF"),
+            ]
+        )
+    kb = InlineKeyboardMarkup(inline_keyboard=rows) if rows else None
+    bot.sendMessage(chat_id, f"Lab {lab_id} controls:", reply_markup=kb)
 
-    if cmd == "/remove_sensor":
-        if len(parts) != 2:
-            bot.sendMessage(chat_id, "Usage: /remove_sensor <sensor_id>")
-            return
-        try:
-            r = requests.delete(f"{REGISTRY_API.rstrip('/')}/sensor/{parts[1]}", timeout=5)
-            res = r.json()
-        except Exception:
-            res = {"error": "registry unreachable"}
-        bot.sendMessage(chat_id, "OK" if res.get("ok") else f"Error: {res.get('error','unknown')}")
+
+def send_lab_picker(chat_id, action, all_actuators=False):
+    labs = get_labs()
+    if not labs:
+        bot.sendMessage(chat_id, "No labs.")
         return
+    mode = "all" if all_actuators else "one"
+    buttons = [
+        InlineKeyboardButton(text=f"{lab['lab_id']}", callback_data=f"pick:{action}:{lab['lab_id']}:{mode}")
+        for lab in labs
+    ]
+    rows = [buttons[i:i+3] for i in range(0, len(buttons), 3)]
+    kb = InlineKeyboardMarkup(inline_keyboard=rows)
+    bot.sendMessage(chat_id, f"Choose lab for {action}", reply_markup=kb)
 
-    if cmd == "/add_actuator":
-        if len(parts) != 4:
-            bot.sendMessage(chat_id, "Usage: /add_actuator <lab_id> <actuator_id> <type>")
-            return
-        res = _post("actuators", {"lab_id": parts[1], "actuator_id": parts[2], "type": parts[3]})
-        bot.sendMessage(chat_id, "OK" if res.get("ok") else f"Error: {res.get('error','unknown')}")
+
+def send_actuator_picker(chat_id, lab_id, action):
+    status = _get("status")
+    labs = [l for l in status.get("labs", []) if l.get("lab_id") == lab_id]
+    if not labs:
+        bot.sendMessage(chat_id, "Lab not found.")
         return
-
-    if cmd == "/remove_actuator":
-        if len(parts) != 2:
-            bot.sendMessage(chat_id, "Usage: /remove_actuator <actuator_id>")
-            return
-        try:
-            r = requests.delete(f"{REGISTRY_API.rstrip('/')}/actuator/{parts[1]}", timeout=5)
-            res = r.json()
-        except Exception:
-            res = {"error": "registry unreachable"}
-        bot.sendMessage(chat_id, "OK" if res.get("ok") else f"Error: {res.get('error','unknown')}")
+    acts = labs[0].get("actuators", [])
+    if not acts:
+        bot.sendMessage(chat_id, "No actuators in this lab.")
         return
+    rows = [
+        [InlineKeyboardButton(text=a.get("actuator_id"), callback_data=f"cmd:{lab_id}:{a.get('actuator_id')}:{action}")]
+        for a in acts
+    ]
+    kb = InlineKeyboardMarkup(inline_keyboard=rows)
+    bot.sendMessage(chat_id, f"Choose actuator in {lab_id} to {action}", reply_markup=kb)
 
-    bot.sendMessage(chat_id, "Unknown command. Use /help")
+
+def send_labs_list(chat_id):
+    labs = get_labs()
+    if not labs:
+        bot.sendMessage(chat_id, "No labs.")
+        return
+    txt = "\n".join(f"🏷 {l['lab_id']} – {l.get('name','')}" for l in labs)
+    bot.sendMessage(chat_id, txt)
+
+
+def send_template(chat_id, kind):
+    templates = {
+        "add_lab": '/add_lab <lab_id> "<name>" [notes]',
+        "remove_lab": "/remove_lab <lab_id>",
+        "add_sensor": "/add_sensor <lab_id> <sensor_id> <type>",
+        "remove_sensor": "/remove_sensor <sensor_id>",
+        "add_actuator": "/add_actuator <lab_id> <actuator_id> <type>",
+        "remove_actuator": "/remove_actuator <actuator_id>",
+    }
+    bot.sendMessage(chat_id, f"Template: {templates.get(kind, 'unknown')}")
 
 
 if __name__ == "__main__":
