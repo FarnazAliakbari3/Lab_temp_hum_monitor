@@ -51,7 +51,7 @@ def configure_logging() -> None:
             "console": {
                 "class": "logging.StreamHandler",
                 "formatter": "simple",
-                "level": os.environ.get("LOG_LEVEL", "INFO"),
+                "level": os.environ.get("LOG_LEVEL", "WARNING"),
             },
             "sensor_file": _file("sensors"),
             "actuator_file": _file("actuators"),
@@ -59,13 +59,13 @@ def configure_logging() -> None:
         },
         "root": {
             "handlers": ["console"],
-            "level": os.environ.get("LOG_LEVEL_ROOT", "INFO"),
+            "level": os.environ.get("LOG_LEVEL_ROOT", "WARNING"),
         },
         "loggers": {
             # Sensor pipeline
             "Device_connectors.sensor_bridge": {
                 "handlers": ["sensor_file", "console"],
-                "level": "DEBUG",
+                "level": "INFO",
                 "propagate": False,
             },
             "controller.state_memory": {
@@ -96,7 +96,7 @@ def configure_logging() -> None:
             },
             "Device_connectors.mqtt_client": {
                 "handlers": ["logic_file", "console"],
-                "level": "DEBUG",
+                "level": "INFO",
                 "propagate": False,
             },
         },

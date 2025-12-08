@@ -85,6 +85,10 @@ def run_once(bridge: OperatorBridge, config: dict, base_url: str) -> None:
             value = sensor_reading.get(metric)
             if value is None:
                 continue
+            try:
+                value = round(float(value), 2)
+            except Exception:
+                continue
             payload_fields[f"field{field_num}"] = value
         if api_key and payload_fields:
             clean_key = _extract_key(api_key)

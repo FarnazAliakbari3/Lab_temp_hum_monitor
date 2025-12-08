@@ -82,11 +82,14 @@ function renderLabCard(lab) {
   sensors.innerHTML = "<h3>Sensors</h3>";
   const sensorList = document.createElement("ul");
   sensorList.className = "grid";
+  let outOfRange = false;
   (lab.sensors || []).forEach((sensor) => {
     const reading = sensor.reading || {};
     const type = sensor.type || "";
     const showTemp = type !== "hum";
     const showHum = type !== "temp";
+    if (showTemp && isOutOfRange(reading.t, thresholds.t_low, thresholds.t_high)) outOfRange = true;
+    if (showHum && isOutOfRange(reading.h, thresholds.h_low, thresholds.h_high)) outOfRange = true;
     const item = document.createElement("li");
     item.innerHTML = `
       <span class="item-title">${sensor.sensor_id}</span>
@@ -95,11 +98,17 @@ function renderLabCard(lab) {
       ${showHum ? `<span class="item-value">H: ${fmt(reading.h)}%</span>` : ""}
       <span class="item-meta">${formatTs(reading.ts)}</span>
     `;
+    if ((showTemp && isOutOfRange(reading.t, thresholds.t_low, thresholds.t_high)) || (showHum && isOutOfRange(reading.h, thresholds.h_low, thresholds.h_high))) {
+      item.classList.add("alert");
+    }
     sensorList.appendChild(item);
   });
   sensors.appendChild(sensorList);
   card.appendChild(sensors);
 
+  if (outOfRange) {
+    card.classList.add("alert");
+  }
   const actuators = document.createElement("section");
   actuators.className = "actuators";
   actuators.innerHTML = "<h3>Actuators</h3>";
@@ -129,7 +138,7 @@ function fmt(value) {
   if (value === undefined || value === null || Number.isNaN(value)) {
     return "?";
   }
-  return Number.parseFloat(value).toFixed(1);
+  return Number.parseFloat(value).toFixed(2);
 }
 
 function formatTs(ts) {
@@ -150,12 +159,19 @@ function summarizeTemp(sensors = []) {
   const temps = sensors.map((s) => s.reading?.t).filter((v) => v !== undefined);
   if (!temps.length) return "Temp: ?";
   const avg = temps.reduce((a, b) => a + b, 0) / temps.length;
-  return `Temp: ${avg.toFixed(1)}°C`;
+  return `Temp: ${avg.toFixed(2)}°C`;
 }
 
 function summarizeHum(sensors = []) {
   const hums = sensors.map((s) => s.reading?.h).filter((v) => v !== undefined);
   if (!hums.length) return "Hum: ?";
   const avg = hums.reduce((a, b) => a + b, 0) / hums.length;
-  return `Hum: ${avg.toFixed(1)}%`;
+  return `Hum: ${avg.toFixed(2)}%`;
+}
+
+function isOutOfRange(val, low, high) {
+  if (val === undefined || val === null) return false;
+  if (low !== undefined && val < low) return true;
+  if (high !== undefined && val > high) return true;
+  return false;
 }
