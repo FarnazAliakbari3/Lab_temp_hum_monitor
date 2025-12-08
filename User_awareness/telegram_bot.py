@@ -13,13 +13,14 @@ import shlex
 import requests
 import telepot
 from telepot.loop import MessageLoop
-from telepot.namedtuple import InlineKeyboardMarkup, InlineKeyboardButton
+from telepot.namedtuple import InlineKeyboardMarkup, InlineKeyboardButton, ReplyKeyboardMarkup
 from datetime import datetime
 
 REGISTRY_API = os.getenv("REGISTRY_API_URL", "http://localhost:8080")
 TOKEN = os.getenv("TELEGRAM_BOT_TOKEN", "")
 ALERT_POLL_SEC = int(os.getenv("ALERT_POLL_SEC", "30"))
-ALERT_COOLDOWN_SEC = int(os.getenv("ALERT_COOLDOWN_SEC", "300"))
+# Shorter cooldown so alerts repeat if problem persists
+ALERT_COOLDOWN_SEC = int(os.getenv("ALERT_COOLDOWN_SEC", "120"))
 
 KNOWN_CHATS = set()
 _last_alert = {}
@@ -83,12 +84,12 @@ def fmt_status(data):
         for s in lab.get("sensors", []):
             rd = s.get("reading") or {}
             lines.append(
-                f"   🌡️ {s.get('sensor_id')}: T={fmt_val(rd.get('t'))}°C  H={fmt_val(rd.get('h'))}%  ts={fmt_ts(rd.get('ts','?'))}"
+                f"   🌡️ {s.get('sensor_id')}: T={fmt_val(rd.get('t'))}°C  H={fmt_val(rd.get('h'))}%"
             )
         for a in lab.get("actuators", []):
             st = a.get("state") or {}
             lines.append(
-                f"   ⚙️ {a.get('actuator_id')} ({a.get('type','')}): {st.get('state','?')}  ts={fmt_ts(st.get('ts','?'))}"
+                f"   ⚙️ {a.get('actuator_id')} ({a.get('type','')}): {st.get('state','?')}"
             )
         lines.append("")
     return "\n".join(lines).strip()
@@ -119,23 +120,23 @@ def poll_alerts(bot):
                 t = rd.get("t")
                 h = rd.get("h")
                 if t is not None:
-                    if t > thr.get("t_high", 999) and should_alert(lab_id, "t_high"):
+                    if t >= thr.get("t_high", 999) and should_alert(lab_id, "t_high"):
                         msg = f"⚠️ {lab_id}: temp {fmt_val(t)} > {fmt_val(thr.get('t_high'))} ({sid})"
                         for chat in KNOWN_CHATS:
                             bot.sendMessage(chat, msg)
                         track_alert(lab_id, "t_high")
-                    if t < thr.get("t_low", -999) and should_alert(lab_id, "t_low"):
+                    if t <= thr.get("t_low", -999) and should_alert(lab_id, "t_low"):
                         msg = f"⚠️ {lab_id}: temp {fmt_val(t)} < {fmt_val(thr.get('t_low'))} ({sid})"
                         for chat in KNOWN_CHATS:
                             bot.sendMessage(chat, msg)
                         track_alert(lab_id, "t_low")
                 if h is not None:
-                    if h > thr.get("h_high", 999) and should_alert(lab_id, "h_high"):
+                    if h >= thr.get("h_high", 999) and should_alert(lab_id, "h_high"):
                         msg = f"⚠️ {lab_id}: humidity {fmt_val(h)} > {fmt_val(thr.get('h_high'))} ({sid})"
                         for chat in KNOWN_CHATS:
                             bot.sendMessage(chat, msg)
                         track_alert(lab_id, "h_high")
-                    if h < thr.get("h_low", -999) and should_alert(lab_id, "h_low"):
+                    if h <= thr.get("h_low", -999) and should_alert(lab_id, "h_low"):
                         msg = f"⚠️ {lab_id}: humidity {fmt_val(h)} < {fmt_val(thr.get('h_low'))} ({sid})"
                         for chat in KNOWN_CHATS:
                             bot.sendMessage(chat, msg)
@@ -152,6 +153,38 @@ def handle(msg):
         if not parts:
             return
         cmd = parts[0].lower()
+        # Handle reply keyboard shortcuts
+        if text in ("📊 Status", "status"):
+            data = _get("status")
+            bot.sendMessage(chat_id, fmt_status(data))
+            return
+        if text in ("🏷 Labs", "labs"):
+            send_labs_list(chat_id)
+            return
+        if text in ("⚡ Turn ON", "turn on"):
+            bot.sendMessage(chat_id, "Use: /turn_on <lab_id> <actuator_id>")
+            return
+        if text in ("⏻ Turn OFF", "turn off"):
+            bot.sendMessage(chat_id, "Use: /turn_off <lab_id> <actuator_id>")
+            return
+        if text in ("➕ Add Lab", "add lab"):
+            bot.sendMessage(chat_id, 'Template: /add_lab <lab_id> "<name>" [notes]')
+            return
+        if text in ("➖ Remove Lab", "remove lab"):
+            bot.sendMessage(chat_id, "Template: /remove_lab <lab_id>")
+            return
+        if text in ("➕ Add Sensor", "add sensor"):
+            bot.sendMessage(chat_id, "Template: /add_sensor <lab_id> <sensor_id> <type>")
+            return
+        if text in ("➖ Remove Sensor", "remove sensor"):
+            bot.sendMessage(chat_id, "Template: /remove_sensor <sensor_id>")
+            return
+        if text in ("➕ Add Actuator", "add actuator"):
+            bot.sendMessage(chat_id, "Template: /add_actuator <lab_id> <actuator_id> <type>")
+            return
+        if text in ("➖ Remove Actuator", "remove actuator"):
+            bot.sendMessage(chat_id, "Template: /remove_actuator <actuator_id>")
+            return
 
         if cmd in ("/start", "/help"):
             KNOWN_CHATS.add(chat_id)
@@ -174,12 +207,12 @@ def handle(msg):
 
         if cmd in ("/turn_on", "/turn_off"):
             action = "ON" if cmd == "/turn_on" else "OFF"
-            send_lab_picker(chat_id, action, all_actuators=False)
-            return
-
-        if cmd in ("/turn_on_all", "/turn_off_all"):
-            action = "ON" if cmd == "/turn_on_all" else "OFF"
-            send_lab_picker(chat_id, action, all_actuators=True)
+            if len(parts) != 3:
+                bot.sendMessage(chat_id, f"Usage: {cmd} <lab_id> <actuator_id>")
+                return
+            payload = {"lab_id": parts[1], "actuator_id": parts[2], "action": action, "source": "bot"}
+            res = _post("command", payload)
+            bot.sendMessage(chat_id, "OK" if res.get("ok") else f"Error: {res.get('error','unknown')}")
             return
 
         if cmd == "/add_lab":
@@ -263,14 +296,6 @@ def handle(msg):
                 payload = {"lab_id": lab_id, "actuator_id": actuator_id, "action": action, "source": "bot"}
                 res = _post("command", payload)
                 bot.sendMessage(from_id, "OK" if res.get("ok") else f"Error: {res.get('error','unknown')}")
-            elif data.startswith("pick:"):
-                _, action, lab_id, mode = data.split(":", 3)
-                if not lab_id:
-                    send_lab_picker(from_id, action, all_actuators=(mode == "all"))
-                elif mode == "all":
-                    do_all(from_id, lab_id, action)
-                else:
-                    send_actuator_picker(from_id, lab_id, action)
             elif data.startswith("tpl:"):
                 _, kind = data.split(":", 1)
                 send_template(from_id, kind)
@@ -301,34 +326,6 @@ def do_all(chat_id, lab_id, action):
 def send_menu(chat_id):
     KNOWN_CHATS.add(chat_id)
     labs = get_labs()
-    lab_rows = [[InlineKeyboardButton(text=f"🎛 {lab['lab_id']}", callback_data=f"lab:{lab['lab_id']}")] for lab in labs]
-    action_rows = [
-        [
-            InlineKeyboardButton(text="📊 Status", callback_data="status"),
-            InlineKeyboardButton(text="🏷 Labs", callback_data="list_labs"),
-        ],
-        [
-            InlineKeyboardButton(text="⚡ Turn ON", callback_data="pick:ON::one"),
-            InlineKeyboardButton(text="⏻ Turn OFF", callback_data="pick:OFF::one"),
-        ],
-        [
-            InlineKeyboardButton(text="⚡ ON ALL", callback_data="pick:ON::all"),
-            InlineKeyboardButton(text="⏻ OFF ALL", callback_data="pick:OFF::all"),
-        ],
-        [
-            InlineKeyboardButton(text="➕ Add Lab", callback_data="tpl:add_lab"),
-            InlineKeyboardButton(text="➖ Remove Lab", callback_data="tpl:remove_lab"),
-        ],
-        [
-            InlineKeyboardButton(text="➕ Add Sensor", callback_data="tpl:add_sensor"),
-            InlineKeyboardButton(text="➖ Remove Sensor", callback_data="tpl:remove_sensor"),
-        ],
-        [
-            InlineKeyboardButton(text="➕ Add Actuator", callback_data="tpl:add_actuator"),
-            InlineKeyboardButton(text="➖ Remove Actuator", callback_data="tpl:remove_actuator"),
-        ],
-    ]
-    keyboard = InlineKeyboardMarkup(inline_keyboard=action_rows + lab_rows)
     help_text = (
         "🤖 Temp/Humidity Bot\n"
         "Use buttons or commands:\n"
@@ -336,8 +333,6 @@ def send_menu(chat_id):
         "• /list_labs – list labs\n"
         "• /turn_on <lab_id> <actuator_id>\n"
         "• /turn_off <lab_id> <actuator_id>\n"
-        "• /turn_on_all <lab_id>\n"
-        "• /turn_off_all <lab_id>\n"
         "• /add_lab <lab_id> \"name\" [notes]\n"
         "• /remove_lab <lab_id>\n"
         "• /add_sensor <lab_id> <sensor_id> <type>\n"
@@ -346,7 +341,18 @@ def send_menu(chat_id):
         "• /remove_actuator <actuator_id>\n"
         "Examples: lab_id=lab1, actuator_id=lab1_fan_1, sensor_id=lab1_temp_1\n"
     )
-    bot.sendMessage(chat_id, help_text, reply_markup=keyboard)
+    reply_kb = ReplyKeyboardMarkup(
+        keyboard=[
+            ["📊 Status", "🏷 Labs"],
+            ["⚡ Turn ON", "⏻ Turn OFF"],
+            ["➕ Add Lab", "➖ Remove Lab"],
+            ["➕ Add Sensor", "➖ Remove Sensor"],
+            ["➕ Add Actuator", "➖ Remove Actuator"],
+        ],
+        resize_keyboard=True,
+        one_time_keyboard=False,
+    )
+    bot.sendMessage(chat_id, help_text, reply_markup=reply_kb)
 
 
 def send_lab_controls(chat_id, lab_id):
@@ -374,12 +380,8 @@ def send_lab_picker(chat_id, action, all_actuators=False):
     if not labs:
         bot.sendMessage(chat_id, "No labs.")
         return
-    mode = "all" if all_actuators else "one"
-    buttons = [
-        InlineKeyboardButton(text=f"{lab['lab_id']}", callback_data=f"pick:{action}:{lab['lab_id']}:{mode}")
-        for lab in labs
-    ]
-    rows = [buttons[i:i+3] for i in range(0, len(buttons), 3)]
+    buttons = [InlineKeyboardButton(text=f"{lab['lab_id']}", callback_data=f"pick:{action}:{lab['lab_id']}:one") for lab in labs]
+    rows = [buttons[i : i + 3] for i in range(0, len(buttons), 3)]
     kb = InlineKeyboardMarkup(inline_keyboard=rows)
     bot.sendMessage(chat_id, f"Choose lab for {action}", reply_markup=kb)
 
