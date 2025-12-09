@@ -1,3 +1,5 @@
+# read and write JSON files with thread safety and timestamp management
+
 import json
 import os
 import threading
