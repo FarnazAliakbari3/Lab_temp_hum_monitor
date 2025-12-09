@@ -19,7 +19,7 @@ def configure_logging() -> None:
     if _CONFIGURED:
         return
 
-    log_dir = os.environ.get("LOG_DIR", "/app/logs")
+    log_dir = os.environ.get("LOG_DIR", "/tmp/logs")
     try:
         os.makedirs(log_dir, exist_ok=True)
     except Exception:
