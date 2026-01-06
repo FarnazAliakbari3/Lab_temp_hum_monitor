@@ -55,7 +55,7 @@ class RegistryAPI:
             self.manager = get_manager()
         else:
             host = os.getenv("MQTT_HOST", "localhost")
-            port = int(os.getenv("MQTT_PORT", "1883"))
+            port = int(os.getenv("MQTT_PORT", "1884"))
             self._command_client = MqttClient(client_id="registry_publisher", host=host, port=port)
             self._command_client.connect()
             self.logger.info("Registry running without embedded controller; using controller at %s", CONTROLLER_URL)
@@ -548,3 +548,5 @@ def run():
 
 if __name__ == "__main__":
     run()
+
+
