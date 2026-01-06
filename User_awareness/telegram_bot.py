@@ -10,6 +10,7 @@ Set envs:
 import os
 import time
 import shlex
+import json
 import requests
 import telepot
 from telepot.loop import MessageLoop
@@ -18,12 +19,28 @@ from datetime import datetime
 
 REGISTRY_API = os.getenv("REGISTRY_API_URL", "http://localhost:8080")
 TOKEN = os.getenv("TELEGRAM_BOT_TOKEN", "")
+PERMISSIONS_PATH = os.getenv("PERMISSIONS_PATH", "./catalog/permissions.json")
 ALERT_POLL_SEC = int(os.getenv("ALERT_POLL_SEC", "30"))
 # Shorter cooldown so alerts repeat if problem persists
 ALERT_COOLDOWN_SEC = int(os.getenv("ALERT_COOLDOWN_SEC", "120"))
 
 KNOWN_CHATS = set()
 _last_alert = {}
+
+
+def load_permissions():
+    try:
+        with open(PERMISSIONS_PATH, "r", encoding="utf-8") as fh:
+            data = json.load(fh)
+        ids = set()
+        for arr in (data.get("roles") or {}).values():
+            try:
+                ids.update(int(x) for x in arr)
+            except Exception:
+                continue
+        return ids
+    except Exception:
+        return set()
 
 
 def fmt_val(v):
@@ -119,26 +136,28 @@ def poll_alerts(bot):
                 sid = sensor.get("sensor_id")
                 t = rd.get("t")
                 h = rd.get("h")
+                allowed_ids = load_permissions()
+                recipients = [c for c in KNOWN_CHATS if (not allowed_ids) or c in allowed_ids]
                 if t is not None:
                     if t >= thr.get("t_high", 999) and should_alert(lab_id, "t_high"):
                         msg = f"⚠️ {lab_id}: temp {fmt_val(t)} > {fmt_val(thr.get('t_high'))} ({sid})"
-                        for chat in KNOWN_CHATS:
+                        for chat in recipients:
                             bot.sendMessage(chat, msg)
                         track_alert(lab_id, "t_high")
                     if t <= thr.get("t_low", -999) and should_alert(lab_id, "t_low"):
                         msg = f"⚠️ {lab_id}: temp {fmt_val(t)} < {fmt_val(thr.get('t_low'))} ({sid})"
-                        for chat in KNOWN_CHATS:
+                        for chat in recipients:
                             bot.sendMessage(chat, msg)
                         track_alert(lab_id, "t_low")
                 if h is not None:
                     if h >= thr.get("h_high", 999) and should_alert(lab_id, "h_high"):
                         msg = f"⚠️ {lab_id}: humidity {fmt_val(h)} > {fmt_val(thr.get('h_high'))} ({sid})"
-                        for chat in KNOWN_CHATS:
+                        for chat in recipients:
                             bot.sendMessage(chat, msg)
                         track_alert(lab_id, "h_high")
                     if h <= thr.get("h_low", -999) and should_alert(lab_id, "h_low"):
                         msg = f"⚠️ {lab_id}: humidity {fmt_val(h)} < {fmt_val(thr.get('h_low'))} ({sid})"
-                        for chat in KNOWN_CHATS:
+                        for chat in recipients:
                             bot.sendMessage(chat, msg)
                         track_alert(lab_id, "h_low")
         time.sleep(ALERT_POLL_SEC)
@@ -148,6 +167,10 @@ def handle(msg):
     glance = telepot.glance(msg, flavor="chat")
     if glance and glance[0] == "text":
         _, _, chat_id = glance
+        allowed = load_permissions()
+        if allowed and chat_id not in allowed:
+            bot.sendMessage(chat_id, "Not authorized.")
+            return
         text = msg["text"].strip()
         parts = shlex.split(text)
         if not parts:

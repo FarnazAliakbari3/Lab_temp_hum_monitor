@@ -8,7 +8,7 @@ import urllib.parse
 import urllib.request
 from typing import Any, Dict
 
-from User_awareness.operator_bridge import OperatorBridge
+import requests
 
 
 logger = logging.getLogger("ThingSpeakAdaptor")
@@ -59,8 +59,14 @@ def post_field(api_key: str, field_num: int, value: Any, base_url: str) -> None:
     logger.info("ThingSpeak field%s update response=%s", field_num, body)
 
 
-def run_once(bridge: OperatorBridge, config: dict, base_url: str) -> None:
-    status = bridge.status()
+def run_once(api_url: str, config: dict, base_url: str) -> None:
+    try:
+        resp = requests.get(f"{api_url.rstrip('/')}/status", timeout=10)
+        resp.raise_for_status()
+        status = resp.json()
+    except Exception as exc:
+        logger.error("Failed to fetch status from registry: %s", exc)
+        return
     lookup = build_sensor_lookup(status)
     for chan in config.get("channels", []):
         chan_key = chan.get("api_key")
@@ -108,12 +114,11 @@ def main() -> None:
     api_url = os.getenv("REGISTRY_API_URL", "http://localhost:8080")
     config_path = os.getenv("THINGSPEAK_KEYS_PATH", "./ThingSpeak/keys.json")
     poll_sec = int(os.getenv("THINGSPEAK_POLL_SEC", "60"))
-    bridge = OperatorBridge(api_url)
     config = load_config(config_path)
     base_url = os.getenv("THINGSPEAK_UPDATE_URL", "https://api.thingspeak.com/update")
     logger.info("ThingSpeak adaptor running poll=%ss config=%s", poll_sec, config_path)
     while True:
-        run_once(bridge, config, base_url)
+        run_once(api_url, config, base_url)
         time.sleep(poll_sec)
 
 

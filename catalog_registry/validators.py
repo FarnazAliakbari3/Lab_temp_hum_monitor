@@ -1,3 +1,5 @@
+# check if required keys are present and validate field formats
+
 def require_keys(obj, keys):
     missing = [k for k in keys if k not in obj]
     return missing
